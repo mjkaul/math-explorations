@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Math Explorations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: #2d2d2d;
+            background: linear-gradient(135deg, #f8f6ff 0%, #fff5f5 50%, #f5fff8 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #6b5b95 0%, #b8a9c9 50%, #d4a574 100%);
+            color: white;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.1) 0%, transparent 50%);
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            position: relative;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .content {
+            padding: 3rem;
+        }
+
+        h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.2rem;
+            color: #6b5b95;
+            margin: 2.5rem 0 1.5rem;
+            text-align: center;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .intro {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            text-align: center;
+            color: #555;
+        }
+
+        .intro strong {
+            color: #6b5b95;
+        }
+
+        .activity-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .activity-card {
+            display: block;
+            background: linear-gradient(135deg, #fafafa 0%, #fff 100%);
+            border: 2px solid #e8e4f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(107, 91, 149, 0.15);
+            border-color: #6b5b95;
+        }
+
+        .activity-card::before {
+            content: attr(data-number);
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ddd;
+        }
+
+        .activity-card h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.4rem;
+            color: #6b5b95;
+            margin-bottom: 0.5rem;
+        }
+
+        .activity-card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .category {
+            margin: 2.5rem 0;
+        }
+
+        .category-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.2rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            padding-left: 0.5rem;
+            border-left: 4px solid #d4a574;
+        }
+
+        .philosophy-box {
+            background: linear-gradient(135deg, #f8f6ff 0%, #fff 100%);
+            border: 2px solid #6b5b95;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .philosophy-box p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .philosophy-box strong {
+            color: #6b5b95;
+        }
+
+        footer {
+            background: #f8f8f8;
+            padding: 2rem;
+            text-align: center;
+            color: #888;
+            font-size: 0.95rem;
+            border-top: 1px solid #eee;
+        }
+
+        footer strong {
+            color: #6b5b95;
+            font-weight: 600;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            .activity-card {
+                padding: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Little Math Explorations</h1>
+            <p class="tagline">A journey into the philosophy, beauty, and human stories behind mathematics</p>
+        </header>
+
+        <main class="content">
+            <h2>What Is This?</h2>
+
+            <p class="intro">
+                These eleven activities invite you to experience mathematics the way mathematicians actually do:
+                as a creative pursuit full of wonder, unsolved mysteries, and deep questions about reality itself.
+                <strong>This isn't about getting the right answer.</strong> It's about thinking deeply, asking
+                "why," and discovering that math is far stranger and more beautiful than worksheets suggest.
+            </p>
+
+            <div class="philosophy-box">
+                <p>
+                    Mathematics isn't just calculation. It's a conversation with infinity,
+                    a search for truth, and one of humanity's most profound adventures.
+                    <strong>These explorations are your invitation to join that conversation.</strong>
+                </p>
+            </div>
+
+            <h2>The Explorations</h2>
+
+            <div class="category">
+                <div class="category-title">Patterns & Discovery</div>
+                <div class="activity-grid">
+                    <a href="01-golden-ratio.html" class="activity-card" data-number="01">
+                        <h3>The Golden Ratio Treasure Hunt</h3>
+                        <p>Hunt for the mysterious number 1.618... in nature, art, and your own face. Why does the same ratio appear in seashells, sunflowers, and galaxies?</p>
+                    </a>
+                    <a href="03-konigsberg-bridges.html" class="activity-card" data-number="03">
+                        <h3>The Konigsberg Bridges</h3>
+                        <p>A Sunday walk puzzle that created an entirely new branch of mathematics. Learn how changing your perspective can reveal hidden truths.</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="category">
+                <div class="category-title">Philosophy & Big Questions</div>
+                <div class="activity-grid">
+                    <a href="02-infinity-paradoxes.html" class="activity-card" data-number="02">
+                        <h3>Infinity Paradoxes</h3>
+                        <p>Can you ever actually cross a room? Zeno said no. 2,500 years later, we're still arguing about it. Wrestle with paradoxes that haunt philosophy.</p>
+                    </a>
+                    <a href="04-invented-or-discovered.html" class="activity-card" data-number="04">
+                        <h3>Math: Invented or Discovered?</h3>
+                        <p>When you learn that 2+2=4, are you discovering eternal truth or learning a human invention? The oldest debate in mathematical philosophy.</p>
+                    </a>
+                    <a href="05-unreasonable-effectiveness.html" class="activity-card" data-number="05">
+                        <h3>The Unreasonable Effectiveness of Mathematics</h3>
+                        <p>Why does "useless" abstract math keep predicting reality centuries later? A mystery that should keep you up at night.</p>
+                    </a>
+                    <a href="06-godel-incompleteness.html" class="activity-card" data-number="06">
+                        <h3>Godel's Incompleteness Theorems</h3>
+                        <p>A 25-year-old proved that mathematics has limits. Some true things can never be proven. The beautiful proof that shattered a dream.</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="category">
+                <div class="category-title">Creativity & Art</div>
+                <div class="activity-grid">
+                    <a href="07-geometric-art.html" class="activity-card" data-number="07">
+                        <h3>Geometric Art Workshop</h3>
+                        <p>Create Islamic star patterns, Escher tessellations, and mandalas. Discover how strict mathematical rules unleash infinite creativity.</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="category">
+                <div class="category-title">History & Human Stories</div>
+                <div class="activity-grid">
+                    <a href="08-pythagorean-cult.html" class="activity-card" data-number="08">
+                        <h3>The Pythagorean Cult</h3>
+                        <p>The math teacher who started a religion. They worshipped numbers, banned beans, and allegedly drowned a man for discovering irrational numbers.</p>
+                    </a>
+                    <a href="10-mathematical-biography.html" class="activity-card" data-number="10">
+                        <h3>Mathematical Biography</h3>
+                        <p>Emmy Noether changed physics forever while being denied a paid position because she was a woman. The human stories behind the equations.</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="category">
+                <div class="category-title">Reflection & Growth</div>
+                <div class="activity-grid">
+                    <a href="09-mathematicians-lament.html" class="activity-card" data-number="09">
+                        <h3>The Mathematician's Lament</h3>
+                        <p>What if everything you've been taught about math is wrong? A provocative essay argues we teach math like music notation without music.</p>
+                    </a>
+                    <a href="11-mathematical-virtues.html" class="activity-card" data-number="11">
+                        <h3>Mathematical Virtues</h3>
+                        <p>Can mathematics make you a better person? Explore the ancient idea that mathematical practice cultivates wisdom, honesty, and courage.</p>
+                    </a>
+                </div>
+            </div>
+
+        </main>
+
+        <footer>
+            Made by <strong>Gigi</strong> with love and help from <strong>Claude</strong> &copy; 2026
+        </footer>
+    </div>
+</body>
+</html>
