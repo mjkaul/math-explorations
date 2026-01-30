@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematical Lives: Five Extraordinary Stories</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: #2d2d2d;
+            background: linear-gradient(135deg, #fef7f3 0%, #feeee7 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #b86f5b 0%, #a65e4a 100%);
+            color: white;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '✦';
+            position: absolute;
+            font-size: 20rem;
+            opacity: 0.08;
+            right: -4rem;
+            top: -6rem;
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            position: relative;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: #a65e4a;
+            margin: 2.5rem 0 1rem;
+            border-left: 4px solid #b86f5b;
+            padding-left: 1rem;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .vignette {
+            background: linear-gradient(135deg, #fef7f3 0%, #fff 100%);
+            border: 2px solid #b86f5b;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .vignette-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0e0d8;
+        }
+
+        .vignette-title {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem;
+            color: #a65e4a;
+            font-weight: 700;
+        }
+
+        .vignette-dates {
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        .vignette-tagline {
+            font-size: 1.05rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-box {
+            background: white;
+            padding: 1.25rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #b86f5b;
+        }
+
+        .highlight-box h4 {
+            color: #a65e4a;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .quote-box {
+            background: #fff9f5;
+            padding: 1.25rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border-left: 3px solid #b86f5b;
+            font-style: italic;
+        }
+
+        .activity-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 5px solid #a65e4a;
+        }
+
+        .activity-box h3 {
+            font-family: 'Crimson Pro', serif;
+            color: #a65e4a;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .activity-card {
+            background: white;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #b86f5b;
+        }
+
+        .takeaway {
+            background: linear-gradient(135deg, #b86f5b 0%, #a65e4a 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .takeaway h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin: 1rem 0;
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
+        ol, ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #fef7f3 0%, #fff 100%);
+            border: 2px solid #b86f5b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Mathematical Lives</h1>
+            <p class="subtitle">Five Extraordinary Stories</p>
+        </div>
+        
+        <div class="content">
+            <div class="intro-box">
+                <p>Mathematics isn't just abstract symbols on a chalkboard. It's created by real people—people with dreams, struggles, quirks, and passions. Some were rebels. Some were outcasts. Some battled mental illness. Some overcame massive barriers. All were driven by an obsessive love of mathematical beauty.</p>
+                
+                <p style="margin-top: 1rem;">These five stories reveal the human side of mathematics—the personalities behind the proofs, the lives behind the theorems. Their stories might surprise you, inspire you, or make you see mathematicians in a completely new light.</p>
+            </div>
+
+            <div class="vignette">
+                <div class="vignette-header">
+                    <div class="vignette-title">1. Paul Erdős</div>
+                    <div class="vignette-dates">1913-1996</div>
+                </div>
+                <div class="vignette-tagline">"The Man Who Loved Only Numbers"</div>
+                
+                <p>Imagine a mathematician who:</p>
+                <ul>
+                    <li>Owned almost nothing—just a half-empty suitcase</li>
+                    <li>Had no home, no job, no bank account</li>
+                    <li>Showed up unannounced at other mathematicians' houses and said "My brain is open!" (meaning: let's do math together)</li>
+                    <li>Stayed as a guest for days or weeks, proving theorems 19 hours a day</li>
+                    <li>Then moved on to the next collaborator</li>
+                </ul>
+
+                <p>That was Paul Erdős (pronounced "AIR-dish"), one of the most prolific mathematicians in history.</p>
+
+                <div class="highlight-box">
+                    <h4>His Lifestyle:</h4>
+                    <p>Erdős had no interest in possessions, comfort, or conventional life. He never married. He never owned a house. He traveled constantly with his single suitcase, living as a mathematical monk. His only goal: prove as many theorems as possible before he died.</p>
+                    
+                    <p style="margin-top: 0.75rem;">He would arrive at a mathematician's door and announce: "My brain is open. Let's work." They'd collaborate intensely—sometimes for days without sleeping. Then Erdős would leave to visit the next collaborator.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>His Work Ethic:</h4>
+                    <p>Erdős published around 1,500 papers—more than almost any mathematician in history. He collaborated with over 500 mathematicians (also a record). He worked until the day he died at 83, literally collapsing while attending a mathematics conference.</p>
+                    
+                    <p style="margin-top: 0.75rem;">He fueled his marathon math sessions with coffee, caffeine pills, and amphetamines. When friends worried about his drug use, he quit for a month to prove he could—then complained: "You've set mathematics back a month!" and resumed.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>His Unique Language:</h4>
+                    <p>Erdős spoke his own quirky language:</p>
+                    <ul>
+                        <li>"The Supreme Fascist" = God (Erdős was an atheist but joked that God kept the most elegant proofs in a book)</li>
+                        <li>"Epsilon" = small child</li>
+                        <li>"Bosses" = women</li>
+                        <li>"Slaves" = men</li>
+                        <li>"Captured" = married</li>
+                        <li>"Liberated" = divorced</li>
+                        <li>"Died" = stopped doing mathematics</li>
+                        <li>"Left" = actually died</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>The Erdős Number:</h4>
+                    <p>Because Erdős collaborated with so many mathematicians, academics created the "Erdős number":</p>
+                    <ul>
+                        <li>Erdős himself: Erdős number = 0</li>
+                        <li>Someone who wrote a paper with Erdős: Erdős number = 1 (about 500 people)</li>
+                        <li>Someone who wrote a paper with someone who wrote with Erdős: Erdős number = 2</li>
+                        <li>And so on...</li>
+                    </ul>
+                    <p style="margin-top: 0.75rem;">Having a low Erdős number became a badge of honor in mathematics. It's a measure of how connected you are to the collaborative network of mathematics.</p>
+                </div>
+
+                <div class="quote-box">
+                    "A mathematician is a machine for turning coffee into theorems." — Paul Erdős
+                </div>
+
+                <p><strong>His Legacy:</strong> Erdős proved that mathematics can be a collaborative, joyful, obsessive pursuit. He showed that you don't need possessions or conventional success to have a meaningful life—if you have something you love doing.</p>
+            </div>
+
+            <div class="vignette">
+                <div class="vignette-header">
+                    <div class="vignette-title">2. Srinivasa Ramanujan</div>
+                    <div class="vignette-dates">1887-1920</div>
+                </div>
+                <div class="vignette-tagline">"The Man Who Knew Infinity"</div>
+                
+                <p>Born into poverty in South India, Ramanujan had almost no formal mathematical training. He failed out of college twice because he was so obsessed with mathematics that he ignored all other subjects. Yet he became one of history's greatest mathematical geniuses.</p>
+
+                <div class="highlight-box">
+                    <h4>The Divine Inspiration:</h4>
+                    <p>Ramanujan was deeply religious. He claimed the Hindu goddess Namagiri appeared to him in dreams and revealed mathematical formulas. When he woke up, he would write them down—often without proofs, just the results.</p>
+                    
+                    <p style="margin-top: 0.75rem;">Other mathematicians would spend years trying to prove that Ramanujan's formulas were correct. They almost always were. It was as if he could see mathematical truths directly, without needing to derive them step by step.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>The Letter That Changed Everything:</h4>
+                    <p>In 1913, Ramanujan wrote a letter to G.H. Hardy, a famous mathematician at Cambridge University. The letter contained page after page of incredible theorems—formulas Hardy had never seen, many of which seemed impossible.</p>
+                    
+                    <p style="margin-top: 0.75rem;">Hardy later said: "I had never seen anything in the least like them before. A single look at them is enough to show that they could only be written down by a mathematician of the highest class."</p>
+                    
+                    <p style="margin-top: 0.75rem;">Hardy invited Ramanujan to Cambridge. This created a dilemma: As a devout Hindu, Ramanujan wasn't supposed to cross the ocean. His mother prayed for guidance. She too had a dream—the goddess told her to let her son go.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>The Cambridge Years:</h4>
+                    <p>Ramanujan traveled to England in 1914. The culture shock was immense. He was vegetarian in a country with almost no vegetarian food. The cold British weather affected his health. The racism and classism of early 1900s England isolated him.</p>
+                    
+                    <p style="margin-top: 0.75rem;">But mathematically, he thrived. Working with Hardy, he published paper after paper. He developed formulas that are still being used and explored today—in number theory, in physics, even in string theory (discovered decades after his death).</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>The Taxicab Number:</h4>
+                    <p>A famous story: Hardy visited Ramanujan in the hospital. Making small talk, Hardy mentioned he'd arrived in taxi number 1729, which seemed "rather a dull number."</p>
+                    
+                    <p style="margin-top: 0.75rem;">Ramanujan immediately replied: "No, Hardy! It is a very interesting number. It is the smallest number expressible as the sum of two cubes in two different ways!"</p>
+                    
+                    <p style="margin-top: 0.75rem;">(1729 = 1³ + 12³ = 9³ + 10³)</p>
+                    
+                    <p style="margin-top: 0.75rem;">Even while sick in bed, Ramanujan saw deep properties of numbers instantly. His brain worked differently.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Tragic End:</h4>
+                    <p>Ramanujan's health deteriorated in England. He contracted tuberculosis. He returned to India in 1919 but died a year later, at age 32.</p>
+                    
+                    <p style="margin-top: 0.75rem;">In his brief career, he produced nearly 4,000 theorems and formulas. Mathematicians are still working through his notebooks, still discovering that his "wild" formulas are actually correct and important.</p>
+                </div>
+
+                <div class="quote-box">
+                    "An equation means nothing to me unless it expresses a thought of God." — Srinivasa Ramanujan
+                </div>
+
+                <p><strong>His Legacy:</strong> Ramanujan showed that genius can emerge from anywhere—not just from elite universities. He demonstrated that mathematical insight doesn't always come through rigorous formal training. Sometimes it arrives as revelation, as vision, as something that looks like magic but is actually profound understanding.</p>
+            </div>
+
+            <div class="vignette">
+                <div class="vignette-header">
+                    <div class="vignette-title">3. Ada Lovelace</div>
+                    <div class="vignette-dates">1815-1852</div>
+                </div>
+                <div class="vignette-tagline">"The First Computer Programmer (Before Computers Existed)"</div>
+                
+                <p>Ada Lovelace was the daughter of the famous poet Lord Byron (who abandoned the family when Ada was an infant). Her mother, determined that Ada wouldn't become a moody, impractical poet like her father, raised her on mathematics and logic.</p>
+
+                <p>Ada became the world's first computer programmer—in 1843, nearly 100 years before the first electronic computer.</p>
+
+                <div class="highlight-box">
+                    <h4>The Analytical Engine:</h4>
+                    <p>In the 1830s, Charles Babbage designed (but never built) a mechanical computer called the Analytical Engine. It would use punch cards and gears to perform calculations—any calculation you could program into it.</p>
+                    
+                    <p style="margin-top: 0.75rem;">When Ada Lovelace met Babbage at age 17, she became fascinated by the machine. She understood something Babbage himself hadn't fully grasped: <strong>This machine could do more than just math.</strong></p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>The First Algorithm:</h4>
+                    <p>In 1843, Ada translated an article about the Analytical Engine from French to English. But she didn't just translate—she added her own notes that were three times longer than the original article.</p>
+                    
+                    <p style="margin-top: 0.75rem;">In these notes, she included what's now recognized as the first computer program ever written: step-by-step instructions for the Analytical Engine to calculate Bernoulli numbers.</p>
+                    
+                    <p style="margin-top: 0.75rem;">This was the first algorithm designed to be processed by a machine—the first computer program, written before computers existed.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Her Vision:</h4>
+                    <p>What made Ada truly remarkable was her vision of what computers could become. She wrote:</p>
+                    
+                    <div class="quote-box" style="margin-top: 0.75rem;">
+                        "The Analytical Engine might act upon other things besides number... Supposing, for instance, that the fundamental relations of pitched sounds in the science of harmony and of musical composition were susceptible of such expression and adaptations, the engine might compose elaborate and scientific pieces of music of any degree of complexity or extent."
+                    </div>
+                    
+                    <p style="margin-top: 0.75rem;">In 1843, she imagined computers creating music! She saw that machines could manipulate symbols of any kind—not just numbers. This insight anticipated modern computers by a century.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Against the Odds:</h4>
+                    <p>As a woman in Victorian England, Ada faced constant barriers. Women weren't allowed to attend university. They weren't taken seriously in science. Ada had to hide her mathematical work from some family members who thought it "unfeminine."</p>
+                    
+                    <p style="margin-top: 0.75rem;">She also battled serious health problems throughout her life, dying of uterine cancer at age 36—the same age her father died.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Lost and Found:</h4>
+                    <p>Ada's work was largely forgotten after her death. It wasn't until the 1950s—when electronic computers finally existed—that historians rediscovered her notes and realized: This woman had understood computer programming a century before anyone else.</p>
+                    
+                    <p style="margin-top: 0.75rem;">Today, the U.S. Department of Defense's Ada programming language is named in her honor.</p>
+                </div>
+
+                <div class="quote-box">
+                    "That brain of mine is something more than merely mortal; as time will show." — Ada Lovelace (in a letter to her mother)
+                </div>
+
+                <p><strong>Her Legacy:</strong> Ada Lovelace showed that imagination matters as much as calculation in mathematics and science. She saw possibilities no one else saw. She combined poetic vision with mathematical precision—exactly what her mother had tried to prevent, and exactly what made her unique.</p>
+            </div>
+
+            <div class="vignette">
+                <div class="vignette-header">
+                    <div class="vignette-title">4. Maryam Mirzakhani</div>
+                    <div class="vignette-dates">1977-2017</div>
+                </div>
+                <div class="vignette-tagline">"The First Woman to Win Mathematics' Highest Honor"</div>
+                
+                <p>Maryam Mirzakhani grew up in Tehran, Iran, after the Islamic Revolution. As a girl, she dreamed of becoming a writer, not a mathematician. She almost didn't discover her talent for math at all.</p>
+
+                <div class="highlight-box">
+                    <h4>The Unlikely Beginning:</h4>
+                    <p>Maryam's first year of middle school was discouraging—the math teacher didn't believe girls could do mathematics. Maryam nearly lost interest entirely.</p>
+                    
+                    <p style="margin-top: 0.75rem;">But the next year, she got a different teacher who encouraged her. Suddenly mathematics clicked. Within a year, she was competing in the International Mathematical Olympiad. She won gold medals two years in a row—scoring perfect scores both times.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Her Work (Simplified):</h4>
+                    <p>Mirzakhani specialized in geometry—specifically, the geometry of curved surfaces. Imagine surfaces like a doughnut (called a torus) or a pretzel. How many different ways can you draw a simple closed loop on these surfaces? What paths are possible? What patterns emerge?</p>
+                    
+                    <p style="margin-top: 0.75rem;">Her work combined geometry, dynamical systems, and complex analysis in groundbreaking ways. She proved theorems about these curved spaces that mathematicians had struggled with for decades.</p>
+                    
+                    <p style="margin-top: 0.75rem;">Her mathematics was so complex that even other professional mathematicians found it hard to understand. But it was beautiful, deep, and opened new directions for research.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>The Fields Medal:</h4>
+                    <p>In 2014, Maryam became the first woman ever to win the Fields Medal—often called the "Nobel Prize of Mathematics." (The Fields Medal has been awarded since 1936. In 78 years, no woman had won it. Think about that.)</p>
+                    
+                    <p style="margin-top: 0.75rem;">At the award ceremony, her young daughter wasn't impressed. She asked if being the first woman to win was a big deal. Maryam said yes. Her daughter replied: "But is that going to be on the news?"</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Her Process:</h4>
+                    <p>Maryam's approach to mathematics was artistic. She would draw elaborate doodles and sketches on large sheets of paper, exploring ideas visually before formalizing them mathematically. Her daughter called it "painting" because the floor would be covered with sheets of paper filled with drawings.</p>
+                    
+                    <p style="margin-top: 0.75rem;">She described mathematics as "like being lost in a jungle and trying to use all the knowledge that you can gather to come up with some new tricks, and with some luck you might find a way out."</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Tragic Loss:</h4>
+                    <p>In 2013, Maryam was diagnosed with breast cancer. She continued her mathematical work while battling the disease. The cancer metastasized. She died in 2017 at age 40.</p>
+                    
+                    <p style="margin-top: 0.75rem;">The mathematical community was devastated. Here was someone at the peak of her creative powers, with so much more to contribute, taken away far too soon.</p>
+                </div>
+
+                <div class="quote-box">
+                    "The beauty of mathematics only shows itself to more patient followers." — Maryam Mirzakhani
+                </div>
+
+                <p><strong>Her Legacy:</strong> Maryam Mirzakhani shattered the myth that women can't do the highest level of mathematics. She showed that mathematical creativity can be visual and artistic. She proved that brilliance can emerge from unexpected places—from a girl in Tehran who almost gave up on math after one discouraging teacher. Her story reminds us how easily talent can be lost if we're not careful to nurture it.</p>
+            </div>
+
+            <div class="vignette">
+                <div class="vignette-header">
+                    <div class="vignette-title">5. John Nash</div>
+                    <div class="vignette-dates">1928-2015</div>
+                </div>
+                <div class="vignette-tagline">"A Beautiful Mind in a Turbulent World"</div>
+                
+                <p>John Nash revolutionized economics and mathematics with his work on game theory. He won the Nobel Prize in Economics in 1994. His life was also a harrowing journey through paranoid schizophrenia—a story made famous by the film <em>A Beautiful Mind</em>.</p>
+
+                <div class="highlight-box">
+                    <h4>Game Theory Breakthrough:</h4>
+                    <p>At age 21, as a graduate student at Princeton, Nash wrote a 27-page doctoral dissertation that changed economics forever. He proved the existence of what's now called the "Nash Equilibrium"—a concept that explains how people make strategic decisions when their choices affect and are affected by others' choices.</p>
+                    
+                    <p style="margin-top: 0.75rem;">This wasn't just abstract mathematics. Nash Equilibrium is used to understand:</p>
+                    <ul>
+                        <li>How companies compete</li>
+                        <li>How nations negotiate</li>
+                        <li>How evolutionary strategies develop</li>
+                        <li>How internet routing works</li>
+                    </ul>
+                    
+                    <p style="margin-top: 0.75rem;">His dissertation became one of the most influential papers in 20th-century mathematics.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>The Descent:</h4>
+                    <p>In 1959, at age 30, Nash began experiencing paranoid delusions. He believed he was receiving coded messages from extraterrestrials through <em>The New York Times</em>. He thought he was being recruited for a secret cryptographic role. He started seeing patterns and conspiracies everywhere.</p>
+                    
+                    <p style="margin-top: 0.75rem;">He was diagnosed with paranoid schizophrenia. Over the next decades, he went in and out of psychiatric hospitals. He underwent insulin shock therapy. His brilliant career seemed over. His wife divorced him (though she later remarried him and supported him throughout).</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>The Ghost of Princeton:</h4>
+                    <p>During his illness, Nash would wander the halls of Princeton, writing cryptic mathematical formulas on blackboards. Students called him "The Phantom of Fine Hall." He believed he was a messianic figure. He renounced his American citizenship, declaring himself a citizen of the world.</p>
+                    
+                    <p style="margin-top: 0.75rem;">Yet even in his delusions, the mathematical thinking remained. Colleagues noted that his "crazy" ideas often had kernels of mathematical insight buried within them.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>The Recovery:</h4>
+                    <p>Remarkably, in the late 1980s, Nash's symptoms began to recede. He never fully explained why. He later said he consciously decided to reject delusional thinking—to intellectually recognize when thoughts were irrational and dismiss them.</p>
+                    
+                    <p style="margin-top: 0.75rem;">It was like retraining his mind to think logically again, using mathematical discipline to overcome mental illness. By the 1990s, he was doing mathematics again, teaching, and interacting normally with colleagues.</p>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Recognition and Tragedy:</h4>
+                    <p>In 1994, Nash won the Nobel Prize in Economics for his game theory work from 45 years earlier. He became a living legend—the mathematician who lost his mind and found it again.</p>
+                    
+                    <p style="margin-top: 0.75rem;">In 2015, he and his wife were killed in a car accident in New Jersey. They were returning from Norway, where Nash had just received the Abel Prize (one of mathematics' highest honors). He was 86.</p>
+                </div>
+
+                <div class="quote-box">
+                    "I wouldn't have had good scientific ideas if I had thought more normally... The ideas I had about supernatural beings came to me the same way that my mathematical ideas did. So I took them seriously." — John Nash
+                </div>
+
+                <p><strong>His Legacy:</strong> Nash's story reveals the fragility of the human mind and the resilience of the human spirit. His struggle with schizophrenia didn't erase his genius—it complicated it, tested it, nearly destroyed it, but ultimately couldn't extinguish it. He showed that mathematical thinking can be a form of salvation, a way to rebuild a broken mind through logic and discipline. And his game theory work showed that mathematics can illuminate the strategic dance of human interaction—that numbers can explain how we compete, cooperate, and coexist.</p>
+            </div>
+
+            <h2>Your Exploration</h2>
+
+            <div class="activity-box">
+                <h3>Part 1: Deep Dive (45 minutes)</h3>
+                
+                <div class="activity-card">
+                    <p><strong>Choose ONE mathematician from above and research them further:</strong></p>
+                    
+                    <ol>
+                        <li>Watch a documentary or film (if available)</li>
+                        <li>Read more detailed biographies or interviews</li>
+                        <li>Look up one of their actual mathematical contributions and try to understand it at a basic level</li>
+                        <li>Find quotes from them or about them from colleagues</li>
+                    </ol>
+                    
+                    <p style="margin-top: 1rem;"><strong>Create a one-page "portrait":</strong></p>
+                    <ul>
+                        <li>A brief biography highlighting the most interesting parts</li>
+                        <li>One of their quotes that captures their personality or philosophy</li>
+                        <li>An explanation (in simple terms) of what they worked on mathematically</li>
+                        <li>What surprised you most about their story</li>
+                    </ul>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Part 2: Comparative Analysis (30 minutes)</h3>
+                
+                <div class="activity-card">
+                    <p><strong>Compare and contrast any TWO mathematicians from above:</strong></p>
+                    
+                    <p style="margin-top: 1rem;">Create a Venn diagram or chart showing:</p>
+                    <ul>
+                        <li><strong>Similarities:</strong> What did they have in common? (Obsessive dedication? Overcoming barriers? Unconventional approaches?)</li>
+                        <li><strong>Differences:</strong> How were their paths different? (Educational background? Social circumstances? Personality?)</li>
+                        <li><strong>Insights:</strong> What do these similarities and differences tell you about what it takes to do great mathematics?</li>
+                    </ul>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Part 3: Personal Reflection Essay (60 minutes)</h3>
+                
+                <div class="activity-card">
+                    <p><strong>Write 2-3 pages addressing these questions:</strong></p>
+                    
+                    <ol>
+                        <li><strong>The Human Element:</strong> How did these stories change (or not change) your view of mathematicians? Did you expect mathematicians to be like these people?</li>
+                        
+                        <li><strong>Barriers and Persistence:</strong> All five faced significant obstacles (poverty, illness, discrimination, mental illness, social barriers). Yet all persisted. What drove them? Is there a common thread?</li>
+                        
+                        <li><strong>Different Paths to Genius:</strong> These five took very different paths to mathematical greatness:
+                            <ul>
+                                <li>Erdős: Nomadic collaboration</li>
+                                <li>Ramanujan: Divine inspiration without formal training</li>
+                                <li>Ada: Vision ahead of her time</li>
+                                <li>Maryam: Visual, artistic approach</li>
+                                <li>Nash: Theoretical elegance despite personal chaos</li>
+                            </ul>
+                            What does this diversity of approaches tell you about mathematics? Is there one "right way" to do math?
+                        </li>
+                        
+                        <li><strong>The Price of Genius:</strong> Several of these mathematicians paid heavy prices for their brilliance (poverty, isolation, illness, early death). Do you think the sacrifice was worth it? For them? For the world?</li>
+                        
+                        <li><strong>Personal Connection:</strong> Which mathematician's story resonated with you most? Why? Is there anything about their approach or personality that you relate to or aspire to?</li>
+                        
+                        <li><strong>Mathematics as a Human Pursuit:</strong> After reading these stories, do you see mathematics differently? Does knowing the human stories behind the theorems make math more or less interesting?</li>
+                    </ol>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Part 4: Creative Response (Optional)</h3>
+                
+                <div class="activity-card">
+                    <p><strong>Choose ONE creative project:</strong></p>
+                    
+                    <p><strong>Option A - Letter:</strong> Write a letter from one of these mathematicians to your 13-year-old self, giving advice about pursuing mathematics or facing obstacles.</p>
+                    
+                    <p><strong>Option B - Dialogue:</strong> Imagine two of these mathematicians meeting. Write a dialogue between them about their different approaches to mathematics.</p>
+                    
+                    <p><strong>Option C - Timeline:</strong> Create an artistic timeline of one mathematician's life, highlighting key moments both personal and mathematical.</p>
+                    
+                    <p><strong>Option D - "What If":</strong> Choose one of the barriers these mathematicians faced (Ramanujan not getting to Cambridge, Ada being forbidden from mathematics, Maryam's discouraging first teacher). Write a short alternate history: What if that barrier had stopped them? What would the world have lost?</p>
+                </div>
+            </div>
+
+            <h2>The Big Picture</h2>
+
+            <div class="takeaway">
+                <h3>What This Means for Your Math Class</h3>
+                
+                <p>When you're sitting in math class working through equations, it's easy to think of mathematics as this cold, impersonal subject—just rules and formulas handed down from on high.</p>
+
+                <p style="margin-top: 1rem;">But every formula was discovered by a human being. Every theorem was proved by someone with a story. The quadratic formula, the Pythagorean theorem, the rules you're learning—they all came from real people with passions, struggles, and dreams.</p>
+
+                <p style="margin-top: 1rem;"><strong>Mathematics is a human creation.</strong> It's built by people who were obsessive (Erdős), mystical (Ramanujan), visionary (Ada), artistic (Maryam), and troubled (Nash). It's built by people who faced poverty, discrimination, illness, and doubt—and persisted anyway because they loved the beauty of mathematical truth.</p>
+
+                <p style="margin-top: 1rem;">These stories teach us several profound lessons:</p>
+
+                <p style="margin-top: 1rem;"><strong>1. There's no single path to mathematical insight.</strong> You can be formally trained or self-taught. You can work collaboratively or in isolation. You can visualize geometrically or think algebraically. Mathematics is big enough for different approaches.</p>
+
+                <p style="margin-top: 1rem;"><strong>2. Barriers can be overcome.</strong> Every one of these mathematicians faced obstacles that should have stopped them. They succeeded not because the obstacles weren't real, but because their passion was stronger than the barriers.</p>
+
+                <p style="margin-top: 1rem;"><strong>3. Mathematics is creative and beautiful.</strong> These weren't people just following algorithms. They were creating new ways to see, new ways to think, new ways to understand reality. That's artistry.</p>
+
+                <p style="margin-top: 1rem;"><strong>4. Your struggles are normal.</strong> Even geniuses struggle. Nash battled mental illness. Ramanujan faced poverty and discrimination. Maryam dealt with a discouraging teacher. If math feels hard, you're in good company. Difficulty is part of the process.</p>
+
+                <p style="margin-top: 1rem;">So when you're working on your math homework tonight, remember: You're following in the footsteps of these extraordinary humans. You're learning to think the way they thought, to see patterns the way they saw them. You're joining a human tradition of mathematical exploration that spans cultures, centuries, and countless personal stories.</p>
+
+                <p style="margin-top: 1rem;"><strong>Mathematics isn't just what you learn. It's who you become while learning it.</strong> And that makes every problem you solve part of a larger human story.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

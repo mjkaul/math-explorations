@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Fibonacci Sequence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: #2d2d2d;
+            background: linear-gradient(135deg, #f0fef3 0%, #e3fee9 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #3d9970 0%, #2e7d5e 100%);
+            color: white;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '1, 1, 2, 3, 5, 8, 13...';
+            position: absolute;
+            font-size: 2.5rem;
+            opacity: 0.15;
+            right: -1rem;
+            top: 2rem;
+            font-family: 'Crimson Pro', serif;
+            font-weight: 700;
+            transform: rotate(-5deg);
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            position: relative;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: #2e7d5e;
+            margin: 2rem 0 1rem;
+            border-left: 4px solid #3d9970;
+            padding-left: 1rem;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .sequence-box {
+            background: linear-gradient(135deg, #f0fef3 0%, #fff 100%);
+            border: 2px solid #3d9970;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .sequence-numbers {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: #2e7d5e;
+            font-weight: 700;
+            margin: 1rem 0;
+            letter-spacing: 0.5rem;
+        }
+
+        .nature-box {
+            background: white;
+            border: 2px solid #3d9970;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .nature-box h3 {
+            font-family: 'Crimson Pro', serif;
+            color: #2e7d5e;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .example-item {
+            background: linear-gradient(135deg, #f0fef3 0%, #fff 100%);
+            padding: 1.25rem;
+            margin: 0.75rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #3d9970;
+        }
+
+        .example-item h4 {
+            color: #2e7d5e;
+            margin-bottom: 0.5rem;
+        }
+
+        .golden-connection {
+            background: linear-gradient(135deg, #fef9f3 0%, #fee7d3 100%);
+            border: 2px solid #b8935b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .golden-connection h3 {
+            font-family: 'Crimson Pro', serif;
+            color: #a68249;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .ratio-demo {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-family: monospace;
+        }
+
+        .activity-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 5px solid #2e7d5e;
+        }
+
+        .activity-box h3 {
+            font-family: 'Crimson Pro', serif;
+            color: #2e7d5e;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .exploration-card {
+            background: white;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #3d9970;
+        }
+
+        .pattern-box {
+            background: linear-gradient(135deg, #f0fef3 0%, #fff9fc 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: 2px dashed #3d9970;
+        }
+
+        .quote {
+            font-style: italic;
+            border-left: 3px solid #3d9970;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .takeaway {
+            background: linear-gradient(135deg, #3d9970 0%, #2e7d5e 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .takeaway h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin: 1rem 0;
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
+        ol, ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        .math-property {
+            background: #f0f8ff;
+            padding: 1.25rem;
+            margin: 0.75rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #3d9970;
+        }
+
+        .math-property h4 {
+            color: #2e7d5e;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>The Fibonacci Sequence</h1>
+            <p class="subtitle">Nature's Secret Code</p>
+        </div>
+        
+        <div class="content">
+            <h2>The Simplest Pattern, Everywhere</h2>
+            
+            <p>In 1202, an Italian mathematician named Leonardo Fibonacci posed a puzzle about rabbit breeding. From that whimsical problem emerged one of the most surprising discoveries in mathematics: <strong>A simple number pattern that appears throughout nature, art, music, and the cosmos.</strong></p>
+
+            <div class="sequence-box">
+                <p style="font-size: 1.1rem; margin-bottom: 0.5rem;">The Fibonacci Sequence:</p>
+                <div class="sequence-numbers">1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89...</div>
+                
+                <p style="margin-top: 1.5rem;"><strong>The Rule:</strong> Each number is the sum of the previous two numbers.</p>
+                <ul style="text-align: left; margin-top: 1rem; list-style-position: inside;">
+                    <li>1 + 1 = 2</li>
+                    <li>1 + 2 = 3</li>
+                    <li>2 + 3 = 5</li>
+                    <li>3 + 5 = 8</li>
+                    <li>And so on, forever...</li>
+                </ul>
+            </div>
+
+            <p>That's it. That's the whole rule. Absurdly simple. Yet this pattern shows up in places so unexpected that mathematicians are still discovering new occurrences today.</p>
+
+            <h2>Fibonacci in Nature (It's Everywhere)</h2>
+
+            <div class="nature-box">
+                <h3>Where You'll Find These Numbers:</h3>
+
+                <div class="example-item">
+                    <h4>🌻 Sunflower Spirals</h4>
+                    <p>Count the spirals in a sunflower going one direction, then count spirals going the other direction. You'll almost always get two consecutive Fibonacci numbers! Common pairs: 21 and 34, or 34 and 55, or 55 and 89. Some giant sunflowers have 89 and 144 spirals.</p>
+                </div>
+
+                <div class="example-item">
+                    <h4>🌲 Pinecones & Pineapples</h4>
+                    <p>Same pattern! Count the spirals on a pinecone or pineapple. You'll find Fibonacci numbers. Pinecones typically show 5 and 8, or 8 and 13 spirals.</p>
+                </div>
+
+                <div class="example-item">
+                    <h4>🌹 Flower Petals</h4>
+                    <p>Many flowers have Fibonacci numbers of petals:
+                    <ul style="margin-top: 0.5rem;">
+                        <li>Lilies: 3 petals</li>
+                        <li>Buttercups: 5 petals</li>
+                        <li>Delphiniums: 8 petals</li>
+                        <li>Marigolds: 13 petals</li>
+                        <li>Asters: 21 petals</li>
+                        <li>Daisies: 34, 55, or 89 petals</li>
+                    </ul>
+                    </p>
+                </div>
+
+                <div class="example-item">
+                    <h4>🍃 Tree Branches</h4>
+                    <p>The way some tree branches split often follows Fibonacci patterns. Start at the trunk: 1 branch. It splits into 2. Those split into 3, then 5, then 8...</p>
+                </div>
+
+                <div class="example-item">
+                    <h4>🐚 Nautilus Shells</h4>
+                    <p>The spiral of a nautilus shell grows according to Fibonacci proportions. Each chamber is about 1.618 times larger than the previous one (that's the golden ratio—we'll get to that!).</p>
+                </div>
+
+                <div class="example-item">
+                    <h4>🌌 Galaxy Spirals</h4>
+                    <p>Even spiral galaxies sometimes follow Fibonacci spiral patterns. From microscopic DNA to galactic spirals—the same mathematical pattern!</p>
+                </div>
+
+                <div class="example-item">
+                    <h4>👤 Human Body</h4>
+                    <p>You have:
+                    <ul style="margin-top: 0.5rem;">
+                        <li>1 nose</li>
+                        <li>2 eyes</li>
+                        <li>3 segments in each finger</li>
+                        <li>5 fingers on each hand</li>
+                        <li>8 total finger bones per hand</li>
+                    </ul>
+                    Coincidence? Maybe. But it's interesting!
+                    </p>
+                </div>
+            </div>
+
+            <h2>The Golden Ratio Connection</h2>
+
+            <p>Here's where it gets wild. Remember the golden ratio (φ = 1.618...) from the Golden Ratio exploration? It has a secret connection to Fibonacci.</p>
+
+            <div class="golden-connection">
+                <h3>The Magic of Ratios</h3>
+                
+                <p>Take any two consecutive Fibonacci numbers and divide the larger by the smaller:</p>
+                
+                <div class="ratio-demo">
+                    3 ÷ 2 = 1.5<br>
+                    5 ÷ 3 = 1.666...<br>
+                    8 ÷ 5 = 1.6<br>
+                    13 ÷ 8 = 1.625<br>
+                    21 ÷ 13 = 1.615...<br>
+                    34 ÷ 21 = 1.619...<br>
+                    55 ÷ 34 = 1.6176...<br>
+                    89 ÷ 55 = 1.6181818...<br>
+                    144 ÷ 89 = 1.6179775...
+                </div>
+                
+                <p style="margin-top: 1rem;"><strong>See what's happening?</strong> The ratio keeps getting closer and closer to 1.618—the golden ratio! As Fibonacci numbers get bigger, this ratio approaches φ with perfect precision.</p>
+                
+                <p style="margin-top: 1rem;">This means: <strong>The Fibonacci sequence is secretly the golden ratio in disguise.</strong> When nature uses Fibonacci spirals, it's actually using golden ratio spirals. They're the same thing!</p>
+            </div>
+
+            <h2>Mind-Bending Mathematical Properties</h2>
+
+            <div class="math-property">
+                <h4>1. Pascal's Triangle Hidden Inside</h4>
+                <p>If you take the diagonal sums in Pascal's Triangle (that triangle of numbers where each number is the sum of the two above it), you get... Fibonacci numbers! The two patterns are secretly connected.</p>
+            </div>
+
+            <div class="math-property">
+                <h4>2. Binet's Formula</h4>
+                <p>There's a formula involving φ (golden ratio) and √5 that directly calculates any Fibonacci number without computing all the previous ones. You can find the 100th Fibonacci number without finding the first 99! It involves irrational numbers (φ) producing perfectly whole numbers. How is that possible?</p>
+            </div>
+
+            <div class="math-property">
+                <h4>3. GCD Property</h4>
+                <p>The GCD (greatest common divisor) of two Fibonacci numbers is always another Fibonacci number! For example: GCD(F₆, F₉) = GCD(8, 34) = 2 = F₃. This pattern holds forever.</p>
+            </div>
+
+            <div class="math-property">
+                <h4>4. Sum Property</h4>
+                <p>Add up any 10 consecutive Fibonacci numbers, and the sum is always divisible by 11. Add any consecutive Fibonacci numbers up to Fₙ, and the sum equals Fₙ₊₂ - 1. The patterns never end!</p>
+            </div>
+
+            <div class="quote">
+                "Nature uses only the longest threads to weave her patterns, so each small piece of her fabric reveals the organization of the entire tapestry." — Richard Feynman
+            </div>
+
+            <h2>Fibonacci in Human Creativity</h2>
+
+            <div class="example-item">
+                <h4>🎵 Music</h4>
+                <p>Debussy, Bartók, and other composers used Fibonacci numbers to structure their compositions—deciding when themes should appear, how many measures in each section, etc. The result sounds naturally pleasing because it mirrors patterns our brains recognize from nature.</p>
+            </div>
+
+            <div class="example-item">
+                <h4>🏛️ Architecture</h4>
+                <p>The Parthenon, the Great Pyramid, and many classical buildings use golden ratio proportions (and therefore Fibonacci proportions). Modern architects still use these ratios because buildings just "feel right" when they follow these proportions.</p>
+            </div>
+
+            <div class="example-item">
+                <h4>🎨 Art</h4>
+                <p>Leonardo da Vinci, Salvador Dalí, and many artists intentionally used Fibonacci spirals and golden rectangles in their compositions. The Mona Lisa's face fits into golden rectangles. Dalí's "Sacrament of the Last Supper" is explicitly structured on a golden ratio canvas.</p>
+            </div>
+
+            <h2>Your Fibonacci Investigation</h2>
+
+            <div class="activity-box">
+                <h3>Part 1: Nature Hunt (45 minutes)</h3>
+                
+                <div class="exploration-card">
+                    <p><strong>Go outside and find Fibonacci in the wild!</strong></p>
+                    
+                    <p style="margin-top: 1rem;"><strong>What to bring:</strong></p>
+                    <ul>
+                        <li>Notebook and pencil</li>
+                        <li>Camera or phone</li>
+                        <li>Flowers, pinecones, or other natural objects to examine</li>
+                    </ul>
+                    
+                    <p style="margin-top: 1rem;"><strong>Your mission:</strong></p>
+                    <ol>
+                        <li>Find at least 3 different flowers. Count the petals. How many have Fibonacci numbers?</li>
+                        <li>Find a pinecone. Count the spirals going clockwise and counterclockwise. Record both numbers.</li>
+                        <li>If possible, examine a sunflower (fresh or dried). Count spirals in both directions.</li>
+                        <li>Look at tree branches. Sketch the branching pattern and number each branch.</li>
+                        <li>Examine your own hand. Count finger segments, finger bones, fingers. Note the numbers.</li>
+                    </ol>
+                    
+                    <p style="margin-top: 1rem;"><strong>Document:</strong> Take photos, make sketches, record numbers. Create a "Fibonacci in Nature" photo journal.</p>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Part 2: Golden Ratio Discovery (30 minutes)</h3>
+                
+                <div class="exploration-card">
+                    <p><strong>Prove for yourself that Fibonacci → Golden Ratio</strong></p>
+                    
+                    <p style="margin-top: 1rem;">1. Generate the first 20 Fibonacci numbers (1, 1, 2, 3, 5, 8...)</p>
+                    
+                    <p style="margin-top: 1rem;">2. Calculate the ratios:</p>
+                    <ul>
+                        <li>F₂/F₁, F₃/F₂, F₄/F₃, F₅/F₄, etc.</li>
+                        <li>Use a calculator to get decimals</li>
+                    </ul>
+                    
+                    <p style="margin-top: 1rem;">3. Make a graph:</p>
+                    <ul>
+                        <li>X-axis: Position in sequence (1, 2, 3, 4...)</li>
+                        <li>Y-axis: The ratio</li>
+                        <li>Plot all 19 ratio points</li>
+                        <li>Draw a horizontal line at y = 1.618</li>
+                    </ul>
+                    
+                    <p style="margin-top: 1rem;"><strong>Observe:</strong> Watch how the ratios spiral in toward the golden ratio, getting closer and closer but never quite reaching it (because we'd need infinite Fibonacci numbers to get there exactly).</p>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Part 3: Fibonacci Art (45-60 minutes)</h3>
+                
+                <div class="exploration-card">
+                    <p><strong>Create art using Fibonacci numbers</strong></p>
+                    
+                    <p style="margin-top: 1rem;"><strong>Option A - Fibonacci Spiral Drawing:</strong></p>
+                    <ol>
+                        <li>Draw squares with sides: 1, 1, 2, 3, 5, 8, 13, 21 units</li>
+                        <li>Arrange them in a spiral pattern (1×1, then 1×1 next to it, then 2×2 above those, then 3×3, etc.)</li>
+                        <li>Draw a smooth spiral through the squares, touching each corner</li>
+                        <li>Decorate the spiral—it mirrors natural growth patterns!</li>
+                    </ol>
+                    
+                    <p style="margin-top: 1rem;"><strong>Option B - Fibonacci Poetry:</strong></p>
+                    <p>Write a poem where each line has a Fibonacci number of syllables:</p>
+                    <ul style="font-family: monospace; margin-top: 0.5rem;">
+                        <li>Line 1: 1 syllable</li>
+                        <li>Line 2: 1 syllable</li>
+                        <li>Line 3: 2 syllables</li>
+                        <li>Line 4: 3 syllables</li>
+                        <li>Line 5: 5 syllables</li>
+                        <li>Line 6: 8 syllables</li>
+                        <li>Etc.</li>
+                    </ul>
+                    
+                    <p style="margin-top: 1rem;"><strong>Option C - Fibonacci Music:</strong></p>
+                    <p>Compose a short melody where note durations follow Fibonacci (1 beat, 1 beat, 2 beats, 3 beats, 5 beats, 8 beats). Does it sound naturally flowing?</p>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Part 4: The "Why" Question (60 minutes)</h3>
+                
+                <div class="pattern-box">
+                    <p><strong>Write a 2-3 page essay addressing:</strong></p>
+                    
+                    <ol>
+                        <li><strong>The Mystery:</strong> WHY does nature use Fibonacci patterns so often? Is it:
+                            <ul style="margin-top: 0.5rem;">
+                                <li>Mathematical necessity (these patterns are optimal for packing, growth, etc.)?</li>
+                                <li>Evolutionary advantage (organisms that follow these patterns survive better)?</li>
+                                <li>Coincidence (we notice patterns that aren't really there)?</li>
+                                <li>Something deeper—a fundamental principle of reality?</li>
+                            </ul>
+                            Defend your answer with examples from your nature hunt.
+                        </li>
+                        
+                        <li><strong>The Golden Connection:</strong> The fact that Fibonacci numbers converge to the golden ratio seems too perfect to be coincidence. What does this tell us about the relationship between simple rules (add the previous two numbers) and complex outcomes (the golden ratio appears)?</li>
+                        
+                        <li><strong>Math vs. Nature:</strong> Did Fibonacci discover these patterns, or did he invent a sequence that happened to match nature? What's the difference? Does this relate to the "invented vs. discovered" question?</li>
+                        
+                        <li><strong>Personal Reflection:</strong> After finding Fibonacci in nature yourself, has your view of mathematics changed? Does seeing math in pinecones and sunflowers make math feel more real, more beautiful, more interesting?</li>
+                    </ol>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Part 5: Extension Challenge (Optional)</h3>
+                
+                <div class="exploration-card">
+                    <p><strong>The Rabbit Problem (Original Fibonacci):</strong></p>
+                    <p>Fibonacci's original problem: Rabbits breed monthly. Each pair produces a new pair each month, starting from their second month of life. If you start with one pair, how many pairs will you have after 12 months?</p>
+                    
+                    <p style="margin-top: 1rem;">Draw it out month by month (use circles for rabbit pairs). Prove to yourself that the number of pairs each month follows the Fibonacci sequence. Why does this work?</p>
+                </div>
+            </div>
+
+            <h2>The Big Picture</h2>
+
+            <div class="takeaway">
+                <h3>What This Means for Your Math Class</h3>
+                
+                <p>When you're learning about sequences in math class—finding patterns, writing formulas, generating terms—it can feel abstract and disconnected from reality.</p>
+
+                <p style="margin-top: 1rem;">But the Fibonacci sequence proves that <strong>the simplest mathematical rules can generate the patterns of life itself.</strong> The rule "add the previous two numbers" is something a kindergartener could understand. Yet from this childishly simple rule emerges the spiral of galaxies, the arrangement of seeds in a sunflower, the proportions of classical architecture, and the structure of musical masterpieces.</p>
+
+                <p style="margin-top: 1rem;"><strong>This is the power of mathematics:</strong> Simple rules, profound consequences. Order emerging from simplicity. Beauty arising from pattern.</p>
+
+                <p style="margin-top: 1rem;">When you hold a pinecone in your hand and count its spirals, you're not just observing nature—you're witnessing mathematics made physical. The abstract sequence on your homework page is the same sequence encoded in DNA, expressed in petals, manifested in shells.</p>
+
+                <p style="margin-top: 1rem;">Every number in the Fibonacci sequence is connected to every other number by a simple relationship. Every flower petal, every nautilus chamber, every galaxy arm is connected to every other by that same relationship. <strong>The universe speaks mathematics.</strong> And when you learn the Fibonacci sequence, you're learning one of nature's most fundamental sentences.</p>
+
+                <p style="margin-top: 1rem;">So the next time you're working with sequences, patterns, or ratios in math class, remember: You're not just manipulating symbols. You're learning the language that sunflowers use to arrange their seeds, that shells use to grow their spirals, that galaxies use to form their arms. You're learning how to read the book of nature, written in numbers.</p>
+
+                <p style="margin-top: 1rem;"><strong>Mathematics isn't separate from the world. It's woven into everything.</strong> And Fibonacci showed us one of the most beautiful threads in that weaving.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

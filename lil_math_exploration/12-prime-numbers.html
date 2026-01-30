@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Mystery of Prime Numbers</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: #2d2d2d;
+            background: linear-gradient(135deg, #f3f5fe 0%, #e7ebfe 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4a63b8 0%, #3952a5 100%);
+            color: white;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '2, 3, 5, 7, 11, 13...';
+            position: absolute;
+            font-size: 3rem;
+            opacity: 0.1;
+            right: -1rem;
+            top: 1rem;
+            font-family: 'Crimson Pro', serif;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            position: relative;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: #3952a5;
+            margin: 2rem 0 1rem;
+            border-left: 4px solid #4a63b8;
+            padding-left: 1rem;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .mystery-box {
+            background: linear-gradient(135deg, #f3f5fe 0%, #fff 100%);
+            border: 2px solid #4a63b8;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .mystery-box h3 {
+            font-family: 'Crimson Pro', serif;
+            color: #3952a5;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .prime-fact {
+            background: white;
+            padding: 1.25rem;
+            margin: 0.75rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #4a63b8;
+        }
+
+        .prime-fact h4 {
+            color: #3952a5;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .proof-box {
+            background: #fefeff;
+            border: 2px dashed #4a63b8;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .proof-box h4 {
+            font-family: 'Crimson Pro', serif;
+            color: #3952a5;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .activity-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 5px solid #3952a5;
+        }
+
+        .activity-box h3 {
+            font-family: 'Crimson Pro', serif;
+            color: #3952a5;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .experiment-card {
+            background: white;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #4a63b8;
+        }
+
+        .number-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 0.25rem;
+            margin: 1rem 0;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .number-cell {
+            padding: 0.5rem;
+            text-align: center;
+            background: #f0f0f0;
+            border-radius: 4px;
+        }
+
+        .unsolved-box {
+            background: linear-gradient(135deg, #fff9f3 0%, #ffe7e7 100%);
+            border: 2px solid #e85d8a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .unsolved-box h3 {
+            font-family: 'Crimson Pro', serif;
+            color: #d54a77;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .quote {
+            font-style: italic;
+            border-left: 3px solid #4a63b8;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .takeaway {
+            background: linear-gradient(135deg, #4a63b8 0%, #3952a5 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .takeaway h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin: 1rem 0;
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
+        ol, ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        .application-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .application-item {
+            background: white;
+            padding: 1.25rem;
+            border-radius: 8px;
+            border-left: 4px solid #4a63b8;
+        }
+
+        .application-item h4 {
+            color: #3952a5;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>The Mystery of Prime Numbers</h1>
+            <p class="subtitle">The Atoms of Mathematics</p>
+        </div>
+        
+        <div class="content">
+            <h2>The Building Blocks of All Numbers</h2>
+            
+            <p>Prime numbers are deceptively simple: A prime number is any number greater than 1 that can only be divided evenly by 1 and itself. That's it. 2, 3, 5, 7, 11, 13, and so on.</p>
+
+            <p>But from this simple definition flows one of the deepest mysteries in all of mathematics—a mystery that has obsessed mathematicians for over 2,000 years and remains unsolved today.</p>
+
+            <p>Here's what makes primes so special: <strong>Every whole number greater than 1 is either prime or can be broken down into prime numbers multiplied together.</strong> Just like atoms are the building blocks of matter, primes are the building blocks of numbers.</p>
+
+            <div class="mystery-box">
+                <h3>The Fundamental Theorem of Arithmetic</h3>
+                <p>Every number has exactly one "prime factorization"—one unique way to build it from primes.</p>
+                <ul style="margin-top: 1rem;">
+                    <li>12 = 2 × 2 × 3 (and no other combination of primes)</li>
+                    <li>60 = 2 × 2 × 3 × 5</li>
+                    <li>100 = 2 × 2 × 5 × 5</li>
+                </ul>
+                <p style="margin-top: 1rem;">This seems obvious, but it's actually profound. It means primes are truly fundamental—everything else is built from them. This is why mathematicians call primes "the atoms of arithmetic."</p>
+            </div>
+
+            <h2>The Infinity Proof (Euclid's Masterpiece)</h2>
+
+            <p>Around 300 BCE, Euclid proved something beautiful: <strong>There are infinitely many prime numbers.</strong></p>
+
+            <p>What makes this proof elegant is its cleverness. Instead of trying to find all the primes (impossible!), Euclid proved that no matter how many primes you've found, there's always another one waiting.</p>
+
+            <div class="proof-box">
+                <h4>Euclid's Proof (Simplified):</h4>
+                
+                <p><strong>Assume:</strong> Someone claims they've found all the prime numbers. They list them: p₁, p₂, p₃, ... pₙ</p>
+                
+                <p style="margin-top: 1rem;"><strong>Now consider:</strong> Multiply all those primes together and add 1.</p>
+                <p style="margin-left: 2rem; font-family: monospace;">N = (p₁ × p₂ × p₃ × ... × pₙ) + 1</p>
+                
+                <p style="margin-top: 1rem;"><strong>Ask:</strong> Is N prime or composite (not prime)?</p>
+                
+                <p style="margin-top: 1rem;"><strong>If N is prime:</strong> Great! We found a new prime that wasn't on the list.</p>
+                
+                <p style="margin-top: 1rem;"><strong>If N is composite:</strong> It must have prime factors. But N isn't divisible by any prime on our list (dividing N by any listed prime leaves a remainder of 1). So N must have prime factors that aren't on our list!</p>
+                
+                <p style="margin-top: 1rem;"><strong>Either way:</strong> The list was incomplete. There's always another prime.</p>
+                
+                <p style="margin-top: 1rem;"><strong>Therefore:</strong> Prime numbers are infinite.</p>
+            </div>
+
+            <div class="quote">
+                "Mathematicians have tried in vain to this day to discover some order in the sequence of prime numbers, and we have reason to believe that it is a mystery into which the mind will never penetrate." — Leonhard Euler
+            </div>
+
+            <h2>Crazy Prime Properties</h2>
+
+            <div class="prime-fact">
+                <h4>1. Primes Become Rare (But Never Stop)</h4>
+                <p>Between 1-100, there are 25 primes. Between 1,000,000-1,000,100, there are only about 6. They thin out as numbers get bigger, but they never stop entirely. The gaps between primes grow, but new primes keep appearing forever.</p>
+            </div>
+
+            <div class="prime-fact">
+                <h4>2. Twin Primes</h4>
+                <p>Some primes come in pairs separated by just 2: (3,5), (5,7), (11,13), (17,19), (29,31)... These are called twin primes. Do they go on forever? <strong>Nobody knows!</strong> The Twin Prime Conjecture remains unproven after centuries.</p>
+            </div>
+
+            <div class="prime-fact">
+                <h4>3. The Riemann Hypothesis</h4>
+                <p>This is the biggest unsolved problem in mathematics. It's about predicting where primes appear. There's a $1,000,000 prize for solving it. Mathematicians believe it's true, but no one has proven it in 160+ years. If proven, it would revolutionize our understanding of primes.</p>
+            </div>
+
+            <div class="prime-fact">
+                <h4>4. Mersenne Primes (The Giants)</h4>
+                <p>Primes of the form 2ⁿ - 1 are called Mersenne primes. The largest known prime number is always a Mersenne prime. As of 2024, the largest known prime has over 41 MILLION digits! People search for these using networks of thousands of computers (Great Internet Mersenne Prime Search - GIMPS).</p>
+            </div>
+
+            <div class="prime-fact">
+                <h4>5. Goldbach's Conjecture</h4>
+                <p>Every even number greater than 2 can be written as the sum of two primes. Try it: 8 = 3+5, 10 = 3+7, 12 = 5+7, 100 = 47+53. It's been tested for numbers up to 4 × 10¹⁸, and it always works. But no one can prove it works for ALL even numbers. Proposed in 1742, still unsolved!</p>
+            </div>
+
+            <h2>Why Primes Matter (They Run Your Life)</h2>
+
+            <div class="application-grid">
+                <div class="application-item">
+                    <h4>Internet Security (Encryption)</h4>
+                    <p>Every time you buy something online or send a private message, prime numbers protect you. RSA encryption (used everywhere) works because it's easy to multiply two huge primes together but incredibly hard to factor the result back into those primes. Your credit card is safe because of primes!</p>
+                </div>
+
+                <div class="application-item">
+                    <h4>Cicada Life Cycles</h4>
+                    <p>Some cicadas emerge every 13 or 17 years (both prime numbers). Why? It helps them avoid predators whose life cycles might sync with theirs. If cicadas emerged every 12 years and a predator had a 3-year cycle, they'd meet every 12 years. But 13 and 17 are harder to sync with—that's the evolutionary advantage of primes!</p>
+                </div>
+
+                <div class="application-item">
+                    <h4>Quantum Physics</h4>
+                    <p>Prime numbers show up in quantum mechanics and the distribution of energy levels in atoms. The mathematics of primes connects to the deepest questions about the physical universe.</p>
+                </div>
+
+                <div class="application-item">
+                    <h4>Music & Art</h4>
+                    <p>Some composers use prime numbers to create rhythms that never quite repeat, generating complexity from simple rules. Visual artists use prime-based patterns for the same reason.</p>
+                </div>
+            </div>
+
+            <h2>Your Prime Number Adventure</h2>
+
+            <div class="activity-box">
+                <h3>Part 1: The Sieve of Eratosthenes (30 minutes)</h3>
+                
+                <div class="experiment-card">
+                    <p><strong>The Ancient Method for Finding Primes:</strong></p>
+                    
+                    <p>Around 200 BCE, Eratosthenes invented a "sieve" to filter out all primes. You'll recreate his method:</p>
+                    
+                    <ol>
+                        <li>Write all numbers from 1 to 100 in a grid (10×10)</li>
+                        <li>Cross out 1 (not prime by definition)</li>
+                        <li>Circle 2 (the first prime). Cross out all multiples of 2 (4, 6, 8, 10...)</li>
+                        <li>Circle the next uncrossed number (3). Cross out all multiples of 3 (6, 9, 12...)</li>
+                        <li>Circle the next uncrossed number (5). Cross out all multiples of 5</li>
+                        <li>Continue this process...</li>
+                        <li>All circled numbers are prime!</li>
+                    </ol>
+                    
+                    <p style="margin-top: 1rem;"><strong>Reflection:</strong> What patterns do you notice in where the primes appear? Do they cluster in certain areas? What's the longest gap you see between primes?</p>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Part 2: Twin Prime Hunt (20 minutes)</h3>
+                
+                <div class="experiment-card">
+                    <p>Using your sieve results, identify all twin primes (primes that differ by 2) between 1-100.</p>
+                    
+                    <p style="margin-top: 1rem;"><strong>Questions to investigate:</strong></p>
+                    <ul>
+                        <li>How many twin prime pairs did you find?</li>
+                        <li>Do they become rarer as numbers get bigger?</li>
+                        <li>Can you find any pattern to predict where twin primes appear?</li>
+                        <li>Why do you think this problem remains unsolved?</li>
+                    </ul>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Part 3: Goldbach Testing (20 minutes)</h3>
+                
+                <div class="experiment-card">
+                    <p>Test Goldbach's Conjecture: Every even number greater than 2 is the sum of two primes.</p>
+                    
+                    <p style="margin-top: 1rem;"><strong>Test these even numbers:</strong></p>
+                    <p>8, 14, 20, 26, 32, 50, 68, 84, 100</p>
+                    
+                    <p style="margin-top: 1rem;">For each, find at least one way to write it as the sum of two primes. (Some have multiple solutions!)</p>
+                    
+                    <p style="margin-top: 1rem;"><strong>Challenge:</strong> Can you find an even number that CAN'T be written this way? (Spoiler: No one has ever found one!)</p>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Part 4: Prime Factorization Challenge (20 minutes)</h3>
+                
+                <div class="experiment-card">
+                    <p><strong>The Easy Direction:</strong> Multiply these prime numbers together:</p>
+                    <p style="font-family: monospace; margin-top: 0.5rem;">17 × 19 = ?</p>
+                    <p style="margin-top: 0.5rem;">That was easy, right?</p>
+                    
+                    <p style="margin-top: 1.5rem;"><strong>The Hard Direction:</strong> Now factor these numbers into primes:</p>
+                    <ul style="margin-top: 0.5rem;">
+                        <li>143 = ?</li>
+                        <li>221 = ?</li>
+                        <li>323 = ?</li>
+                    </ul>
+                    
+                    <p style="margin-top: 1rem;">Much harder! Now imagine trying to factor a 200-digit number. That's why internet security works—multiplying primes is easy, factoring is incredibly hard.</p>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Part 5: Philosophical Essay (45 minutes)</h3>
+                
+                <p><strong>Write 2 pages addressing:</strong></p>
+                
+                <ol>
+                    <li><strong>The Pattern Mystery:</strong> Primes appear random, yet they're completely determined (a number either is or isn't prime). How can something be both random-looking and completely predictable at the same time? What does this tell us about patterns in nature?</li>
+                    
+                    <li><strong>The Unsolved Problems:</strong> Why do you think problems like the Twin Prime Conjecture and Goldbach's Conjecture remain unsolved for centuries? These aren't impossibly complex—they're simple to state, even for 7th graders. What makes them so hard to prove?</li>
+                    
+                    <li><strong>The Infinity Question:</strong> Reflect on Euclid's proof. There's something mind-bending about proving infinite things exist using finite logic. How does this proof make you think about infinity differently?</li>
+                    
+                    <li><strong>Practical vs Pure:</strong> For 2000+ years, primes were studied for pure curiosity with no practical use. Then suddenly they became essential to internet security. Does this change how you think about "useless" knowledge?</li>
+                </ol>
+
+                <h3 style="margin-top: 2rem;">Part 6: Extension Challenge (Optional)</h3>
+                
+                <div class="experiment-card">
+                    <p><strong>The $1 Million Question:</strong></p>
+                    <p>Research the Riemann Hypothesis. You won't understand all the mathematics (professional mathematicians barely do!), but try to grasp:</p>
+                    <ul style="margin-top: 0.75rem;">
+                        <li>What question is it asking?</li>
+                        <li>Why does it matter?</li>
+                        <li>Why is it so hard to prove?</li>
+                        <li>What would we gain if someone proved it?</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">Write a one-page "explainer" as if you're telling a friend what the Riemann Hypothesis is about (in the broadest terms).</p>
+                </div>
+            </div>
+
+            <div class="unsolved-box">
+                <h3>⚠️ Active Mathematics Alert ⚠️</h3>
+                <p>Unlike most math class, where you learn things discovered centuries ago, prime number theory is <strong>happening right now</strong>. Mathematicians are actively working on these problems today. The next big prime discovery could happen this year. Someone might prove the Twin Prime Conjecture in your lifetime.</p>
+                <p style="margin-top: 1rem;"><strong>You're not just learning old mathematics—you're learning about mysteries that remain unsolved.</strong> And who knows? Maybe someday you'll be the one to crack one of these ancient puzzles.</p>
+            </div>
+
+            <h2>The Big Picture</h2>
+
+            <div class="takeaway">
+                <h3>What This Means for Your Math Class</h3>
+                
+                <p>When you're learning to factor numbers in math class—breaking 24 into 2 × 2 × 2 × 3—you might think it's just a mechanical skill. But you're actually working with the fundamental structure of numbers themselves.</p>
+
+                <p style="margin-top: 1rem;"><strong>Every number has a story told in primes.</strong> When you factor a number, you're discovering its atomic structure, revealing which building blocks were used to create it. This isn't just arithmetic—it's mathematical archaeology.</p>
+
+                <p style="margin-top: 1rem;">And here's what makes primes philosophically profound: They demonstrate that mathematics contains genuine mystery. We know infinitely many primes exist. We can find them, use them, prove theorems about them. But we still can't predict exactly where the next one will appear. We can't prove basic conjectures that seem obviously true.</p>
+
+                <p style="margin-top: 1rem;"><strong>Mathematics isn't finished.</strong> It's not a closed book of solved problems. It's an active, living field full of deep mysteries. The questions about primes aren't hard because they require fancy techniques you haven't learned yet—they're hard because <em>nobody knows the answers</em>.</p>
+
+                <p style="margin-top: 1rem;">So when you're working with prime factorization, divisibility rules, or GCF/LCM problems, remember: You're playing with the atoms of mathematics. You're engaging with questions that have puzzled the greatest minds for millennia. You're touching mysteries that remain unsolved.</p>
+
+                <p style="margin-top: 1rem;"><strong>Simple doesn't mean shallow. Primes are simple to define but infinitely deep to understand.</strong> That's the beauty of mathematics—profound complexity emerging from simple rules. And that beauty is waiting in your homework, if you know where to look.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
