@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Golden Ratio Treasure Hunt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: #2d2d2d;
+            background: linear-gradient(135deg, #fef9f3 0%, #fef5e7 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #d4a574 0%, #c89666 100%);
+            color: white;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><path d="M0 50 Q 25 25, 50 50 T 100 50" stroke="rgba(255,255,255,0.1)" fill="none" stroke-width="2"/></svg>');
+            opacity: 0.3;
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            position: relative;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: #c89666;
+            margin: 2rem 0 1rem;
+            border-left: 4px solid #d4a574;
+            padding-left: 1rem;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .phi-box {
+            background: linear-gradient(135deg, #fef9f3 0%, #fff9ef 100%);
+            border: 2px solid #d4a574;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+
+        .phi-number {
+            font-size: 2.5rem;
+            color: #c89666;
+            font-weight: 700;
+            margin: 0.5rem 0;
+        }
+
+        .activity-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 5px solid #c89666;
+        }
+
+        .activity-box h3 {
+            font-family: 'Crimson Pro', serif;
+            color: #c89666;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .checklist {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .checklist li {
+            padding: 0.75rem;
+            margin: 0.5rem 0;
+            background: white;
+            border-radius: 8px;
+            position: relative;
+            padding-left: 2.5rem;
+            transition: transform 0.2s ease;
+        }
+
+        .checklist li:hover {
+            transform: translateX(5px);
+        }
+
+        .checklist li::before {
+            content: '□';
+            position: absolute;
+            left: 0.75rem;
+            color: #d4a574;
+            font-size: 1.3rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #666;
+            border-left: 3px solid #d4a574;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .takeaway {
+            background: linear-gradient(135deg, #d4a574 0%, #c89666 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .takeaway h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin: 1rem 0;
+        }
+
+        strong {
+            color: #c89666;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>The Golden Ratio Treasure Hunt</h1>
+            <p class="subtitle">Discovering φ (Phi) - Nature's Secret Number</p>
+        </div>
+        
+        <div class="content">
+            <h2>What is This Mysterious Number?</h2>
+            
+            <div class="phi-box">
+                <p>The Golden Ratio</p>
+                <div class="phi-number">φ = 1.618...</div>
+                <p>(Phi = about 1.618)</p>
+            </div>
+
+            <p>Around 2,300 years ago, the Greek mathematician Euclid was working on his masterpiece, <em>The Elements</em>, when he described something strange. He found a way to cut a line into two pieces where the ratio of the whole line to the big piece equals the ratio of the big piece to the small piece.</p>
+
+            <p>Why did this matter? Because this same ratio—this precise relationship—keeps showing up <strong>everywhere</strong>. In spiral seashells. In flower petals. In the proportions of your face. In the way branches grow on trees. Even in the spiraling arms of galaxies millions of light-years away.</p>
+
+            <p>But here's the philosophical puzzle: <strong>Is phi something we invented, or something we discovered?</strong> Did humans create this ratio, or was it "out there" in the universe, waiting to be found? The ancient philosopher Plato believed that mathematical truths existed in a perfect realm beyond our physical world—that numbers and shapes were more real than the objects we can touch.</p>
+
+            <div class="quote">
+                "Geometry existed before creation." — Plato
+            </div>
+
+            <p>If phi keeps appearing in nature without anyone teaching it to pinecones and sunflowers, maybe Plato was onto something. Maybe mathematical beauty isn't just in our minds—maybe it's woven into the fabric of reality itself.</p>
+
+            <h2>Your Treasure Hunt Mission</h2>
+
+            <div class="activity-box">
+                <h3>What You'll Need:</h3>
+                <ul class="checklist">
+                    <li>A ruler or measuring tape</li>
+                    <li>A calculator (your phone works!)</li>
+                    <li>A notebook for recording measurements</li>
+                    <li>Optional: A camera to document what you find</li>
+                </ul>
+
+                <h3 style="margin-top: 2rem;">The Hunt:</h3>
+                <p><strong>Step 1: Search Your Home</strong></p>
+                <p>Measure rectangles around your house (books, screens, picture frames, windows). Calculate length ÷ width. When you get close to 1.618, you've found the golden ratio!</p>
+
+                <p style="margin-top: 1.5rem;"><strong>Step 2: Nature Walk</strong></p>
+                <p>Go outside and find:</p>
+                <ul class="checklist">
+                    <li>A pinecone - count spirals going one direction, then the other direction. Divide the larger number by the smaller. Often you'll get close to 1.618!</li>
+                    <li>Flower petals - count them. Many flowers have 5, 8, 13, or 21 petals (these are Fibonacci numbers, which connect to phi)</li>
+                    <li>Tree branches - measure the length of a main branch segment, then the next smaller segment. Calculate the ratio</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>Step 3: The Human Face</strong></p>
+                <p>Measure on yourself or a family member (be gentle and approximate):</p>
+                <ul class="checklist">
+                    <li>Head (top to chin) ÷ Head (top to pupils)</li>
+                    <li>Face width ÷ Nose width</li>
+                    <li>Lips to eyebrow ÷ Nose length</li>
+                </ul>
+
+                <p style="margin-top: 1.5rem;"><strong>Step 4: Reflect & Write</strong></p>
+                <p>After your measurements, write a one-page reflection on these questions:</p>
+                <ul class="checklist">
+                    <li>How many times did you find phi (or close to it)?</li>
+                    <li>What surprised you most?</li>
+                    <li>Do you think phi is something humans invented, or discovered? Why?</li>
+                    <li>If phi appears in nature without anyone planning it, what does that tell us about math?</li>
+                </ul>
+            </div>
+
+            <h2>The Big Picture</h2>
+
+            <div class="takeaway">
+                <h3>What This Means for Your Math Class</h3>
+                <p>The next time you're working with ratios, fractions, or even basic division in your math homework, remember: you're not just manipulating abstract symbols on paper. You're working with the same mathematical relationships that created the spiral of a nautilus shell, that guided the ancient Greeks in building the Parthenon, and that appears in the proportions of Renaissance paintings.</p>
+                
+                <p style="margin-top: 1rem;"><strong>Every mathematical operation is a tool for understanding the deep patterns of reality.</strong> Those "boring" fractions? They're describing the fundamental structure of the universe. The ratio 1.618 doesn't care whether you're excited about it or not—it just keeps showing up, over and over, as if the cosmos itself is trying to tell us something.</p>
+
+                <p style="margin-top: 1rem;">When math class feels tedious, ask yourself: "Where might this show up in the real world?" The answer might surprise you. Beauty isn't just in art and music. Beauty is in mathematics, too—waiting to be noticed.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

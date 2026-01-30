@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gödel's Incompleteness Theorems</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: #2d2d2d;
+            background: linear-gradient(135deg, #fef9f3 0%, #fef3e7 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #b87333 0%, #a66321 100%);
+            color: white;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '⊥';
+            position: absolute;
+            font-size: 18rem;
+            opacity: 0.1;
+            right: -2rem;
+            top: -5rem;
+            font-family: 'Crimson Pro', serif;
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            position: relative;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: #a66321;
+            margin: 2rem 0 1rem;
+            border-left: 4px solid #b87333;
+            padding-left: 1rem;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .theorem-box {
+            background: linear-gradient(135deg, #fef9f3 0%, #fff 100%);
+            border: 3px solid #b87333;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .theorem-box h3 {
+            font-family: 'Crimson Pro', serif;
+            color: #a66321;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .theorem-statement {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid #b87333;
+            font-style: italic;
+        }
+
+        .analogy-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #b87333;
+        }
+
+        .activity-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 5px solid #a66321;
+        }
+
+        .activity-box h3 {
+            font-family: 'Crimson Pro', serif;
+            color: #a66321;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .paradox-example {
+            background: white;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border: 2px dashed #b87333;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #666;
+            border-left: 3px solid #b87333;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .takeaway {
+            background: linear-gradient(135deg, #b87333 0%, #a66321 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .takeaway h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin: 1rem 0;
+        }
+
+        strong {
+            color: #a66321;
+            font-weight: 600;
+        }
+
+        ol, ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        .impact-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .impact-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 3px solid #b87333;
+        }
+
+        .impact-item h4 {
+            color: #a66321;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Gödel's Incompleteness Theorems</h1>
+            <p class="subtitle">The Beautiful Proof That Mathematics Has Limits</p>
+        </div>
+        
+        <div class="content">
+            <h2>The Dream of Perfect Knowledge</h2>
+            
+            <p>In the early 1900s, mathematicians had a beautiful dream: Create a complete system of mathematics where every true statement could be proven. Start with a few simple axioms (basic assumptions), apply logical rules, and eventually you could prove <em>everything</em> that's true and disprove everything that's false.</p>
+
+            <p>It was an almost religious vision—mathematics as a perfect, complete cathedral of truth. David Hilbert, one of the greatest mathematicians of all time, championed this program. The goal was total certainty, total completeness.</p>
+
+            <p>Then, in 1931, a 25-year-old Austrian mathematician named Kurt Gödel destroyed that dream forever.</p>
+
+            <p>What he proved is one of the most shocking results in all of intellectual history. He showed that <strong>the dream of complete mathematical knowledge is impossible</strong>. Not just difficult—<em>logically impossible</em>.</p>
+
+            <h2>The Theorems (Simplified)</h2>
+
+            <div class="theorem-box">
+                <h3>First Incompleteness Theorem</h3>
+                <div class="theorem-statement">
+                    "In any consistent mathematical system powerful enough to include arithmetic, there exist true statements that cannot be proven within that system."
+                </div>
+                <p style="margin-top: 1rem;">Translation: No matter how careful you are, if your math system can do basic arithmetic, there will always be truths that are beyond proof. The system can never be complete.</p>
+            </div>
+
+            <div class="theorem-box">
+                <h3>Second Incompleteness Theorem</h3>
+                <div class="theorem-statement">
+                    "No consistent mathematical system can prove its own consistency."
+                </div>
+                <p style="margin-top: 1rem;">Translation: You can never prove, from within a system, that the system is free from contradictions. You have to step outside it.</p>
+            </div>
+
+            <h2>How Did He Do It?</h2>
+
+            <p>Gödel's proof is incredibly clever. Here's the basic idea:</p>
+
+            <div class="analogy-box">
+                <p><strong>The Liar's Paradox Analogy:</strong></p>
+                <p>Consider the sentence: "This sentence is false."</p>
+                <ul>
+                    <li>If it's true, then what it says is correct, so it's false</li>
+                    <li>If it's false, then what it says is wrong, so it's true</li>
+                    <li>It can't be either! It's a paradox.</li>
+                </ul>
+            </div>
+
+            <p>Gödel did something similar but with mathematical statements. He created a mathematical statement that essentially says <strong>"This statement cannot be proven."</strong></p>
+
+            <p>Think about it:</p>
+            <ul>
+                <li>If the statement CAN be proven, then what it says is false—meaning it CAN'T be proven. Contradiction!</li>
+                <li>If the statement CAN'T be proven, then what it says is true—and we've found a true statement that can't be proven!</li>
+            </ul>
+
+            <p>Either way, we have a true mathematical statement that cannot be proven within the system. Gödel showed that you can construct such statements for any sufficiently complex mathematical system.</p>
+
+            <h2>Why Does This Matter?</h2>
+
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <h4>Philosophy: Limits of Reason</h4>
+                    <p>Gödel proved that pure logic alone can't give us complete truth. There are truths beyond proof. This connects to ancient philosophers like Socrates who said "I know that I know nothing"—wisdom includes recognizing the limits of knowledge.</p>
+                </div>
+
+                <div class="impact-item">
+                    <h4>Mathematics: Eternal Mystery</h4>
+                    <p>Mathematics will never be "finished." No matter how much we prove, there will always be true statements waiting beyond reach. Math is an infinite adventure, not a completable project.</p>
+                </div>
+
+                <div class="impact-item">
+                    <h4>Computer Science: Machine Limits</h4>
+                    <p>Gödel's theorems imply that no computer program can solve all mathematical problems. There are questions computers fundamentally cannot answer, not because we haven't built them well enough, but because of deep logical limits.</p>
+                </div>
+
+                <div class="impact-item">
+                    <h4>Science: Humble Knowledge</h4>
+                    <p>If even pure mathematics—the most certain form of knowledge—has limits, what does that mean for science, which studies the messy physical world? Perhaps complete certainty is impossible anywhere.</p>
+                </div>
+            </div>
+
+            <div class="quote">
+                "The more I ponder, the more I realize that we know very little with any certainty, but we know a great deal that is probably true." — Bertrand Russell
+            </div>
+
+            <h2>Your Exploration</h2>
+
+            <div class="activity-box">
+                <h3>Part 1: Play With Paradoxes (20 minutes)</h3>
+                
+                <div class="paradox-example">
+                    <p><strong>Try these self-referential statements:</strong></p>
+                    
+                    <p>1. "This sentence has five words." (True or false? Count them!)</p>
+                    
+                    <p>2. "This sentence has seven words." (True or false?)</p>
+                    
+                    <p>3. "The opposite of what this sentence says is true." (Paradox!)</p>
+                    
+                    <p>4. Write your own self-referential sentence that creates a paradox.</p>
+                </div>
+                
+                <p>Notice how statements that refer to themselves can create logical tangles. Gödel weaponized this to show limits of mathematical systems.</p>
+
+                <h3 style="margin-top: 2rem;">Part 2: The Barber Paradox (15 minutes)</h3>
+                
+                <div class="paradox-example">
+                    <p><strong>A famous related paradox:</strong></p>
+                    <p>In a village, the barber shaves all and only those men who do not shave themselves.</p>
+                    <p><strong>Question:</strong> Does the barber shave himself?</p>
+                    
+                    <ul style="margin-top: 1rem;">
+                        <li>If he shaves himself, then he's someone who shaves himself, so he shouldn't shave himself</li>
+                        <li>If he doesn't shave himself, then he's someone who doesn't shave himself, so he should shave himself</li>
+                    </ul>
+                    
+                    <p style="margin-top: 1rem;">Work through this carefully. Write a paragraph explaining why this is a paradox and how it relates to self-reference. How is this similar to what Gödel did?</p>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Part 3: Philosophical Essay (45 minutes)</h3>
+                
+                <p>Write a 2-page essay addressing these questions:</p>
+                
+                <ol>
+                    <li><strong>Socratic Wisdom:</strong> Socrates said "I know that I know nothing" and was called the wisest man in Athens for recognizing his ignorance. How does Gödel's theorem relate to this ancient wisdom? Is there power in knowing what you can't know?</li>
+                    
+                    <li><strong>Truth vs. Proof:</strong> Gödel showed some truths can't be proven. What's the difference between something being true and being provable? Give an example from everyday life where you know something is true but can't prove it.</li>
+                    
+                    <li><strong>The Human Factor:</strong> If mathematical systems have limits, but humans can recognize those limits (as Gödel did), does that mean human insight goes beyond pure logic? What does this tell us about human thinking?</li>
+                    
+                    <li><strong>Comfort vs. Uncertainty:</strong> Would you rather live in a world where everything could be proven (but Gödel showed this is impossible), or is there something beautiful about eternal mystery? Defend your answer.</li>
+                </ol>
+
+                <h3 style="margin-top: 2rem;">Part 4: Extension Challenge (Optional)</h3>
+                
+                <p>Research the "Halting Problem" in computer science (proved by Alan Turing). How does it connect to Gödel's theorems? What does it mean that we can prove some problems are impossible to solve?</p>
+            </div>
+
+            <h2>The Big Picture</h2>
+
+            <div class="takeaway">
+                <h3>What This Means for Your Math Class</h3>
+                
+                <p>When you're working through a difficult proof or trying to solve a problem that seems impossible, Gödel's theorem offers a strange comfort: <strong>Some things genuinely can't be solved, and that's not a failure—it's a deep truth about reality.</strong></p>
+
+                <p style="margin-top: 1rem;">But here's the important part: Gödel didn't prove that math is broken or useless. He proved something more subtle—that mathematical truth is <em>richer</em> than what we can capture in any single system. There's always more to discover, always another level deeper.</p>
+
+                <p style="margin-top: 1rem;">When you learn mathematical proofs, you're learning to work within systems that are powerful but not all-powerful. Every theorem you prove is real knowledge, but Gödel reminds us that knowledge is always embedded in a larger mystery.</p>
+
+                <p style="margin-top: 1rem;"><strong>This actually makes math MORE interesting, not less.</strong> If mathematics could be completed—if someone could prove everything—then future mathematicians would just be technicians, checking boxes. But Gödel guaranteed that mathematics will always have frontiers, always have mysteries, always have truths waiting beyond the horizon of proof.</p>
+
+                <p style="margin-top: 1rem;">The next time a math problem frustrates you because you can't solve it, remember: Maybe it's just hard. Or maybe you're brushing against one of those fundamental limits that Gödel proved must exist. Either way, you're engaging with deep questions about the nature of truth itself.</p>
+
+                <p style="margin-top: 1rem;"><strong>Mathematics isn't just calculation. It's an endless conversation with the infinite.</strong> And Gödel proved that conversation will never end.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

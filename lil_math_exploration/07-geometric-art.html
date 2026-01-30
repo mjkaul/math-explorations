@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Art Workshop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: #2d2d2d;
+            background: linear-gradient(135deg, #fff9f3 0%, #ffe7f3 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #e85d8a 0%, #d54a77 100%);
+            color: white;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.1) 40%, rgba(255,255,255,0.1) 60%, transparent 60%);
+            top: -100px;
+            right: -100px;
+            transform: rotate(45deg);
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            position: relative;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: #d54a77;
+            margin: 2rem 0 1rem;
+            border-left: 4px solid #e85d8a;
+            padding-left: 1rem;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .philosophy-box {
+            background: linear-gradient(135deg, #fff9f3 0%, #fff 100%);
+            border: 2px solid #e85d8a;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .philosophy-box h3 {
+            font-family: 'Crimson Pro', serif;
+            color: #d54a77;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .activity-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 5px solid #d54a77;
+        }
+
+        .activity-box h3 {
+            font-family: 'Crimson Pro', serif;
+            color: #d54a77;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-card {
+            background: white;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #e85d8a;
+        }
+
+        .project-card h4 {
+            color: #d54a77;
+            margin-bottom: 0.75rem;
+            font-size: 1.2rem;
+        }
+
+        .materials-list {
+            background: linear-gradient(135deg, #fff9f3 0%, #fff 100%);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #666;
+            border-left: 3px solid #e85d8a;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .takeaway {
+            background: linear-gradient(135deg, #e85d8a 0%, #d54a77 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .takeaway h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin: 1rem 0;
+        }
+
+        strong {
+            color: #d54a77;
+            font-weight: 600;
+        }
+
+        ol, ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        .example-grid {
+            display: grid;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .example-item {
+            background: white;
+            padding: 1.25rem;
+            border-radius: 8px;
+            border: 2px solid #e85d8a;
+        }
+
+        .example-item h4 {
+            color: #d54a77;
+            margin-bottom: 0.5rem;
+        }
+
+        .tips-box {
+            background: linear-gradient(135deg, #fff9f3 0%, #fffbf8 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: 2px dashed #e85d8a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Geometric Art Workshop</h1>
+            <p class="subtitle">Where Mathematical Rules Create Infinite Beauty</p>
+        </div>
+        
+        <div class="content">
+            <h2>The Paradox of Creative Constraint</h2>
+            
+            <p>Here's something that seems backwards: The stricter the rules, the more creative possibilities emerge.</p>
+
+            <p>Think about poetry. A haiku has rigid constraints—exactly 17 syllables in a 5-7-5 pattern. Sonnets have 14 lines in iambic pentameter with specific rhyme schemes. These rules are much more restrictive than free verse. Yet some of the most beautiful poetry ever written follows these strict forms.</p>
+
+            <p>The same is true in geometric art. When you limit yourself to circles, straight lines, symmetry, and repetition, you might think you'd create boring, mechanical designs. But the opposite happens: <strong>Constraints force creativity to flow through narrower channels, and that pressure creates beauty.</strong></p>
+
+            <div class="philosophy-box">
+                <h3>The Philosophy Behind It</h3>
+                <p><strong>Islamic geometric patterns</strong> emerged partly from religious constraints—Islam generally discourages depicting humans or animals in sacred contexts. So artists turned to geometry. The result? Some of the most complex, mesmerizing patterns in human history.</p>
+
+                <p style="margin-top: 1rem;"><strong>M.C. Escher's tessellations</strong> followed strict mathematical rules about how shapes fit together. He couldn't just draw whatever he wanted—shapes had to interlock perfectly with no gaps. This constraint led to his mind-bending impossible staircases and metamorphosing patterns.</p>
+
+                <p style="margin-top: 1rem;"><strong>The Ancient Greek ideal</strong> was that true beauty emerges from proportion, symmetry, and mathematical relationships—not from randomness or chaos.</p>
+            </div>
+
+            <div class="quote">
+                "In art, the hand can never execute anything higher than the heart can imagine." — Ralph Waldo Emerson<br><br>
+                "Mathematics is the art of giving the same name to different things." — Henri Poincaré
+            </div>
+
+            <h2>Your Materials</h2>
+
+            <div class="materials-list">
+                <p><strong>Basic Kit (Required):</strong></p>
+                <ul>
+                    <li>Paper (graph paper is great but not required)</li>
+                    <li>Pencil and eraser</li>
+                    <li>Ruler or straight edge</li>
+                    <li>Compass (or circular objects to trace—cups, coins, etc.)</li>
+                    <li>Colored pencils, markers, or pens (optional but fun)</li>
+                </ul>
+                
+                <p style="margin-top: 1rem;"><strong>Advanced Options:</strong></p>
+                <ul>
+                    <li>Protractor (for precise angles)</li>
+                    <li>Multiple colors of paper</li>
+                    <li>Scissors for cut paper designs</li>
+                </ul>
+            </div>
+
+            <h2>Your Creative Challenges</h2>
+
+            <div class="activity-box">
+                <h3>Choose at Least TWO Projects:</h3>
+
+                <div class="project-card">
+                    <h4>Project 1: Islamic Star Pattern (60 minutes)</h4>
+                    <p><strong>The Rule:</strong> Create a pattern using only compass and straightedge, based on a circle divided into equal parts.</p>
+                    
+                    <p style="margin-top: 1rem;"><strong>Steps:</strong></p>
+                    <ol>
+                        <li>Draw a circle</li>
+                        <li>Divide it into 6, 8, or 12 equal parts (this is your "foundation")</li>
+                        <li>Connect points with straight lines to create star shapes</li>
+                        <li>Repeat the pattern to fill the page</li>
+                        <li>Add color to emphasize different geometric shapes within your pattern</li>
+                    </ol>
+                    
+                    <div class="tips-box">
+                        <p><strong>Pro tip:</strong> Start simple. A six-pointed star is easier than a twelve-pointed one. Once you master one, try making variations. The pattern possibilities are literally infinite.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h4>Project 2: Escher-Style Tessellation (60-90 minutes)</h4>
+                    <p><strong>The Rule:</strong> Create shapes that fit together perfectly with no gaps, like a jigsaw puzzle that goes on forever.</p>
+                    
+                    <p style="margin-top: 1rem;"><strong>Basic Method:</strong></p>
+                    <ol>
+                        <li>Start with a simple shape that tiles (square, triangle, or hexagon)</li>
+                        <li>Cut a curve from one side</li>
+                        <li>Add that exact curve to the opposite side</li>
+                        <li>Repeat for other sides</li>
+                        <li>Now your weird shape will tile perfectly!</li>
+                        <li>Draw your tile many times across the page</li>
+                        <li>Add details to make each tile look like something (fish, birds, lizards, etc.)</li>
+                    </ol>
+                    
+                    <div class="tips-box">
+                        <p><strong>Escher's trick:</strong> He would gradually morph his shapes from one creature to another across the pattern—birds becoming fish, day becoming night. Can you do something similar?</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h4>Project 3: Mandala Design (45-60 minutes)</h4>
+                    <p><strong>The Rule:</strong> Everything must have rotational symmetry around a center point.</p>
+                    
+                    <p style="margin-top: 1rem;"><strong>Steps:</strong></p>
+                    <ol>
+                        <li>Draw a circle</li>
+                        <li>Mark the center</li>
+                        <li>Divide the circle into 6 or 8 equal wedges (like pizza slices)</li>
+                        <li>Design a pattern in ONE wedge</li>
+                        <li>Repeat that exact pattern in every wedge</li>
+                        <li>Add layers moving from center to edge</li>
+                    </ol>
+                    
+                    <div class="tips-box">
+                        <p><strong>The constraint:</strong> Whatever you do in one section MUST be repeated in all sections. This limitation is actually freeing—you only have to design 1/6th of the pattern!</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h4>Project 4: Spiral Pattern (30-45 minutes)</h4>
+                    <p><strong>The Rule:</strong> Create art based on mathematical spirals (Fibonacci spiral, Archimedean spiral, or logarithmic spiral).</p>
+                    
+                    <p style="margin-top: 1rem;"><strong>Golden Spiral Method:</strong></p>
+                    <ol>
+                        <li>Draw a square</li>
+                        <li>Draw a slightly larger square next to it (in the ratio 1:1.618 if possible)</li>
+                        <li>Keep adding squares in the Fibonacci sequence</li>
+                        <li>Connect the corners with a smooth curve</li>
+                        <li>Add decorative elements that follow the spiral</li>
+                    </ol>
+                </div>
+            </div>
+
+            <h2>Reflection Questions</h2>
+
+            <div class="activity-box">
+                <h3>After Creating Your Art (30 minutes writing):</h3>
+                
+                <ol>
+                    <li><strong>Freedom Through Constraint:</strong> Did having strict mathematical rules feel limiting or liberating? Did the constraints help or hurt your creativity? Explain with specific examples from your work.</li>
+                    
+                    <li><strong>Discovery vs. Invention:</strong> When you were creating your pattern, did it feel like you were <em>discovering</em> patterns that were already mathematically possible, or <em>inventing</em> something new? Is there a difference?</li>
+                    
+                    <li><strong>Beauty and Mathematics:</strong> What makes your geometric art beautiful (if you think it is)? Is it the symmetry? The complexity? The colors? How much of that beauty comes from the mathematical structure versus your creative choices?</li>
+                    
+                    <li><strong>Infinite Variations:</strong> Could you have made your design differently while following the same rules? How many different designs could you create with the same constraints? What does this tell you about the relationship between rules and creativity?</li>
+                    
+                    <li><strong>Philosophy Connection:</strong> The ancient Greeks believed beauty was mathematical—that perfect proportions and symmetry create ideal beauty. Do you agree? Or can things be beautiful without following mathematical rules?</li>
+                </ol>
+            </div>
+
+            <h2>The Big Picture</h2>
+
+            <div class="takeaway">
+                <h3>What This Means for Your Math Class</h3>
+                
+                <p>When you're learning formulas and rules in math class, it can feel like you're being boxed in, limited, forced to follow someone else's rules. But geometric art teaches us something profound: <strong>Rules aren't prisons. They're frameworks for creation.</strong></p>
+
+                <p style="margin-top: 1rem;">Think about music. A piano has only 88 keys, yet musicians create infinite melodies. Those keys aren't limitations—they're the structure that makes music possible. The same with mathematical rules. The Pythagorean theorem, the rules of algebra, the principles of geometry—these aren't restrictions on thinking. They're the tools that let you create.</p>
+
+                <p style="margin-top: 1rem;">When you followed the constraint "everything must have rotational symmetry" or "shapes must tile with no gaps," you still made unique art. No one else's mandala looks exactly like yours. The mathematical rules didn't determine what you created—they provided the structure within which your creativity could flourish.</p>
+
+                <p style="margin-top: 1rem;"><strong>This is what mathematics IS at its core: structured creativity.</strong> Mathematicians aren't just following rules—they're exploring what's possible within rule systems, discovering beautiful patterns, making creative choices about how to solve problems.</p>
+
+                <p style="margin-top: 1rem;">The next time a math problem feels constraining—when you're told "you must use the quadratic formula" or "follow these steps exactly"—remember your geometric art. Those constraints aren't keeping you from thinking. They're giving your thinking a shape. And within that shape, there's infinite room to create, explore, and discover beauty.</p>
+
+                <p style="margin-top: 1rem;"><strong>Mathematics is art. Art is mathematics. And the constraints are what make both possible.</strong></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

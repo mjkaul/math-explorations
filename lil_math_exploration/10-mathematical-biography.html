@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematical Biography: Emmy Noether</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght:400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: #2d2d2d;
+            background: linear-gradient(135deg, #f9f3fe 0%, #f2e7fd 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #7a5bb8 0%, #6849a5 100%);
+            color: white;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '∞';
+            position: absolute;
+            font-size: 15rem;
+            opacity: 0.1;
+            right: -2rem;
+            top: -3rem;
+            font-family: 'Crimson Pro', serif;
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            position: relative;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: #6849a5;
+            margin: 2rem 0 1rem;
+            border-left: 4px solid #7a5bb8;
+            padding-left: 1rem;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .timeline-section {
+            margin: 2rem 0;
+        }
+
+        .timeline-item {
+            background: linear-gradient(135deg, #f9f3fe 0%, #fff 100%);
+            border-left: 4px solid #7a5bb8;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+
+        .timeline-year {
+            font-weight: 600;
+            color: #6849a5;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .barrier-box {
+            background: #fef5f8;
+            border: 2px solid #7a5bb8;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .barrier-box h3 {
+            font-family: 'Crimson Pro', serif;
+            color: #6849a5;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .achievement-box {
+            background: white;
+            border: 2px solid #7a5bb8;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .achievement-box h3 {
+            font-family: 'Crimson Pro', serif;
+            color: #6849a5;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .activity-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 5px solid #6849a5;
+        }
+
+        .activity-box h3 {
+            font-family: 'Crimson Pro', serif;
+            color: #6849a5;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .research-prompt {
+            background: white;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #7a5bb8;
+        }
+
+        .mathematician-option {
+            background: linear-gradient(135deg, #f9f3fe 0%, #fff9fc 100%);
+            padding: 1.25rem;
+            margin: 0.75rem 0;
+            border-radius: 8px;
+            border: 2px solid #7a5bb8;
+        }
+
+        .mathematician-option h4 {
+            color: #6849a5;
+            margin-bottom: 0.5rem;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #666;
+            border-left: 3px solid #7a5bb8;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-size: 1.05rem;
+        }
+
+        .takeaway {
+            background: linear-gradient(135deg, #7a5bb8 0%, #6849a5 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .takeaway h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin: 1rem 0;
+        }
+
+        strong {
+            color: #6849a5;
+            font-weight: 600;
+        }
+
+        ol, ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Mathematical Biography</h1>
+            <p class="subtitle">The Human Stories Behind the Equations</p>
+        </div>
+        
+        <div class="content">
+            <h2>Emmy Noether: The Mathematician Einstein Called a Genius</h2>
+            
+            <p>In 1935, Albert Einstein wrote a letter to <em>The New York Times</em> about a recently deceased mathematician:</p>
+
+            <div class="quote">
+                "In the judgment of the most competent living mathematicians, Fräulein Noether was the most significant creative mathematical genius thus far produced since the higher education of women began."
+            </div>
+
+            <p>This was Emmy Noether. She revolutionized physics and mathematics. Her work underlies modern particle physics. Yet she spent most of her career unable to get a paid position at a university because she was a woman.</p>
+
+            <p>Her story reveals something profound: <strong>Mathematics is a deeply human endeavor, shaped by the people who create it—their struggles, their passions, their persistence.</strong></p>
+
+            <div class="timeline-section">
+                <h3 style="font-family: 'Crimson Pro', serif; color: #6849a5; font-size: 1.6rem; margin-bottom: 1rem;">The Story</h3>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1882</div>
+                    <p>Amalie Emmy Noether born in Erlangen, Germany. Her father, Max Noether, was a mathematics professor. Growing up, she wasn't expected to pursue mathematics—women studied languages or music if they studied anything.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1900-1902</div>
+                    <p>Emmy studied languages, planning to become a teacher. But she was drawn to mathematics. Problem: Women weren't officially allowed to attend university in Germany.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1904</div>
+                    <p>After laws changed slightly, she was allowed to <em>audit</em> classes at the University of Erlangen (sit in but not receive credit). She sat in the back, the only woman among 986 male students.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1907</div>
+                    <p>Completed her doctorate in mathematics—one of the first women in Germany to do so. Her dissertation was on algebraic invariants (abstract algebra).</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1908-1915</div>
+                    <p>Worked at the Mathematical Institute at Erlangen, <strong>unpaid for seven years</strong>. She couldn't get a position because she was a woman. She worked under her father's name. Despite this, she published groundbreaking work.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1915</div>
+                    <p>David Hilbert and Felix Klein (two of the world's top mathematicians) invited her to the University of Göttingen. But the university refused to give her a position. Faculty said: "What will our soldiers think when they return from war and find themselves learning at the feet of a woman?"</p>
+                    <p style="margin-top: 0.75rem;">Hilbert's famous response: "I do not see that the sex of the candidate is an argument against her admission. After all, we are a university, not a bathhouse!"</p>
+                    <p style="margin-top: 0.75rem;">She lectured anyway, sometimes under Hilbert's name.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1918</div>
+                    <p><strong>Noether's Theorem</strong> — Her most famous work. She proved a deep connection between symmetries in physics and conservation laws. This theorem became fundamental to modern physics, including Einstein's general relativity and quantum mechanics.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1919</div>
+                    <p>Finally allowed to officially teach at Göttingen (still unpaid initially). She revolutionized abstract algebra over the next 14 years.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1933</div>
+                    <p>The Nazis came to power. Noether was Jewish. She was expelled from the university. She fled to America, getting a position at Bryn Mawr College in Pennsylvania.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1935</div>
+                    <p>Died suddenly from complications after surgery, at age 53. She had just begun to receive the recognition she deserved.</p>
+                </div>
+            </div>
+
+            <h2>The Barriers She Faced</h2>
+
+            <div class="barrier-box">
+                <h3>Systematic Obstacles:</h3>
+                <ul>
+                    <li><strong>Gender discrimination:</strong> Barred from attending university, then from getting paid positions, simply for being a woman</li>
+                    <li><strong>Religious persecution:</strong> Expelled from Germany for being Jewish</li>
+                    <li><strong>Lack of recognition:</strong> Had to lecture under male colleagues' names</li>
+                    <li><strong>Financial hardship:</strong> Worked unpaid or for minimal pay for much of her career</li>
+                </ul>
+                
+                <p style="margin-top: 1rem;">Yet she persisted. Why? Because she loved mathematics. Because she had insights the world needed. Because the beauty and truth of mathematics drove her forward despite everything.</p>
+            </div>
+
+            <h2>What She Achieved</h2>
+
+            <div class="achievement-box">
+                <h3>Noether's Theorem (1918)</h3>
+                <p>Proved that every symmetry in nature corresponds to a conservation law in physics:</p>
+                <ul style="margin-top: 0.75rem;">
+                    <li>Time symmetry (physics works the same today as yesterday) → Energy is conserved</li>
+                    <li>Space symmetry (physics works the same here as there) → Momentum is conserved</li>
+                    <li>Rotational symmetry (physics works the same in all directions) → Angular momentum is conserved</li>
+                </ul>
+                <p style="margin-top: 0.75rem;">This theorem is now fundamental to particle physics, cosmology, and our understanding of reality. Every physics student learns it.</p>
+            </div>
+
+            <div class="achievement-box">
+                <h3>Abstract Algebra Revolution</h3>
+                <p>Noether pioneered a new, more abstract way of thinking about algebra. Her approach (now called "Noetherian" mathematics) transformed the field. Modern algebra is built on her foundations.</p>
+            </div>
+
+            <div class="quote">
+                "My methods are really methods of working and thinking; this is why they have crept in everywhere anonymously." — Emmy Noether
+            </div>
+
+            <h2>Your Investigation</h2>
+
+            <div class="activity-box">
+                <h3>Part 1: Deep Dive Into One Life (60 minutes)</h3>
+                
+                <p>Choose ONE mathematician from the list below (or another if you prefer). Research their life story, focusing on:</p>
+                
+                <div class="mathematician-option">
+                    <h4>Srinivasa Ramanujan (1887-1920)</h4>
+                    <p>Self-taught Indian genius who produced thousands of theorems, claiming a goddess revealed them to him in dreams. Died young, but changed number theory forever.</p>
+                </div>
+
+                <div class="mathematician-option">
+                    <h4>Sophie Germain (1776-1831)</h4>
+                    <p>French mathematician who studied under a male pseudonym ("Monsieur LeBlanc") because women weren't allowed. Made major contributions to number theory and elasticity theory.</p>
+                </div>
+
+                <div class="mathematician-option">
+                    <h4>Alan Turing (1912-1954)</h4>
+                    <p>Cracked the Nazi Enigma code, potentially shortening WWII by years. Invented theoretical foundations of computer science. Persecuted for being gay; died by suicide at 41.</p>
+                </div>
+
+                <div class="mathematician-option">
+                    <h4>Katherine Johnson (1918-2020)</h4>
+                    <p>African American mathematician whose calculations were crucial to NASA's space program. Faced racism and sexism but became indispensable to the moon landing.</p>
+                </div>
+
+                <div class="mathematician-option">
+                    <h4>Évariste Galois (1811-1832)</h4>
+                    <p>Revolutionary French mathematician who died in a duel at age 20. The night before the duel, he frantically wrote down his mathematical discoveries, which later revolutionized algebra.</p>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Research Questions:</h3>
+                <div class="research-prompt">
+                    <ol>
+                        <li>What barriers did they face? (Social, political, personal, financial?)</li>
+                        <li>What motivated them to persist despite these barriers?</li>
+                        <li>What did they discover or create mathematically?</li>
+                        <li>How did their personal circumstances shape their mathematics?</li>
+                        <li>What happened to their work after they died?</li>
+                        <li>What does their story reveal about who gets to do mathematics and why?</li>
+                    </ol>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Part 2: Biography Essay (60-90 minutes)</h3>
+                
+                <p>Write a 3-4 page biographical essay that includes:</p>
+                
+                <ol>
+                    <li><strong>The Story:</strong> Tell their life narrative engagingly. Make them human, not just a list of achievements.</li>
+                    
+                    <li><strong>The Mathematics:</strong> Explain (as best you can) what they worked on and why it mattered. You don't need to understand all the technical details—focus on the big picture and impact.</li>
+                    
+                    <li><strong>The Struggle:</strong> What obstacles did they overcome? How did these obstacles shape their work and life?</li>
+                    
+                    <li><strong>The Philosophical Question:</strong> Their story should lead you to deeper questions. Like:
+                        <ul>
+                            <li>Does mathematics transcend the messy human world, or is it shaped by human politics and prejudices?</li>
+                            <li>If brilliant people were excluded from mathematics (women, people of color, the poor), how much mathematical beauty was lost?</li>
+                            <li>What drives someone to do mathematics despite receiving no recognition or payment?</li>
+                            <li>Is mathematical genius something you're born with, or something you develop through obsession and work?</li>
+                        </ul>
+                    </li>
+                    
+                    <li><strong>Personal Reflection:</strong> What does their story mean to you? Does it change how you think about mathematics or your own struggles?</li>
+                </ol>
+
+                <h3 style="margin-top: 2rem;">Part 3: Creative Extension (Optional)</h3>
+                
+                <p>Create something inspired by your mathematician:</p>
+                <ul>
+                    <li>Write a first-person monologue from their perspective at a crucial moment</li>
+                    <li>Create a visual timeline of their life with illustrations</li>
+                    <li>Write a letter from them to young people today about pursuing mathematics</li>
+                    <li>Research and try to understand one of their actual theorems or proofs</li>
+                </ul>
+            </div>
+
+            <h2>The Big Picture</h2>
+
+            <div class="takeaway">
+                <h3>What This Means for Your Math Class</h3>
+                
+                <p>When you're learning the quadratic formula or studying trigonometry, it's easy to think of mathematics as this ancient, unchanging body of knowledge—like it's always existed, perfectly formed, in textbooks.</p>
+
+                <p style="margin-top: 1rem;">But every formula, every theorem, every technique you learn was <strong>discovered by a human being</strong>. Someone struggled with it. Someone had the insight. Someone faced doubt and criticism. Someone persisted.</p>
+
+                <p style="margin-top: 1rem;">Emmy Noether worked unpaid for years because she loved mathematics and believed in its importance. Ramanujan filled notebooks with thousands of theorems because mathematics felt like divine inspiration. Sophie Germain studied in secret because knowledge mattered more than social approval.</p>
+
+                <p style="margin-top: 1rem;"><strong>These people were real.</strong> They weren't superhuman geniuses from another planet. They were humans who faced doubts, barriers, failures, and rejections—but who loved mathematics enough to persist anyway.</p>
+
+                <p style="margin-top: 1rem;">When your homework feels hard, when you're stuck on a problem, when math class is frustrating—remember Emmy Noether lecturing under another man's name. Remember Ramanujan, impoverished and self-taught, discovering deep truths. Remember that <em>you're joining a human tradition of struggle and discovery</em>.</p>
+
+                <p style="margin-top: 1rem;">Mathematics isn't just abstract symbols. It's a human story—a story of curiosity, creativity, persistence, and the drive to understand. Every time you solve an equation or understand a proof, you're participating in that story. You're standing on the shoulders of people who gave their lives to this pursuit.</p>
+
+                <p style="margin-top: 1rem;"><strong>That makes your math class matter.</strong> Not because you'll use the quadratic formula in daily life, but because you're learning to think the way Noether thought, to persist the way Germain persisted, to wonder the way Ramanujan wondered. You're becoming part of the human adventure of mathematics.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Königsberg Bridges Problem</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: #2d2d2d;
+            background: linear-gradient(135deg, #f3fef9 0%, #e7fef2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #5ba88a 0%, #4a9677 100%);
+            color: white;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            top: -50%;
+            left: -50%;
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            position: relative;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: #4a9677;
+            margin: 2rem 0 1rem;
+            border-left: 4px solid #5ba88a;
+            padding-left: 1rem;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .diagram-box {
+            background: #f8f9fa;
+            border: 2px solid #5ba88a;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .diagram-description {
+            font-style: italic;
+            color: #666;
+            margin-top: 1rem;
+        }
+
+        .activity-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 5px solid #4a9677;
+        }
+
+        .activity-box h3 {
+            font-family: 'Crimson Pro', serif;
+            color: #4a9677;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .puzzle-box {
+            background: white;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border: 2px dashed #5ba88a;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, #f3fef9 0%, #fff 100%);
+            border: 2px solid #5ba88a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .insight-box strong {
+            color: #4a9677;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #666;
+            border-left: 3px solid #5ba88a;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .takeaway {
+            background: linear-gradient(135deg, #5ba88a 0%, #4a9677 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .takeaway h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin: 1rem 0;
+        }
+
+        strong {
+            color: #4a9677;
+            font-weight: 600;
+        }
+
+        ol, ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>The Königsberg Bridges</h1>
+            <p class="subtitle">How Changing Your Perspective Can Create New Math</p>
+        </div>
+        
+        <div class="content">
+            <h2>A Sunday Walk That Changed Mathematics</h2>
+            
+            <p>In the 1700s, the city of Königsberg (now Kaliningrad, Russia) was built around two islands in the Pregel River. Seven bridges connected the islands to each other and to the mainland. The people of Königsberg had a fun challenge they'd try on Sunday walks:</p>
+
+            <p><strong>Could you cross all seven bridges exactly once and return to where you started?</strong></p>
+
+            <p>Try as they might, nobody could do it. But nobody could prove it was impossible either. It was just a quirky local puzzle—until 1736, when a mathematician named Leonhard Euler decided to tackle it.</p>
+
+            <p>Here's what made Euler a genius: He didn't try harder to solve the puzzle. Instead, <strong>he changed how he looked at it.</strong></p>
+
+            <div class="diagram-box">
+                <p style="font-weight: 600; color: #4a9677;">The Traditional View:</p>
+                <p>People saw: islands, riverbanks, and bridges—physical geography you'd have to walk through.</p>
+                
+                <p style="font-weight: 600; color: #4a9677; margin-top: 1.5rem;">Euler's Revolutionary View:</p>
+                <p>Euler saw: dots (representing land areas) and lines (representing bridges). Nothing else mattered!</p>
+                
+                <p class="diagram-description">He turned a geography problem into a drawing problem. In doing so, he invented an entirely new branch of mathematics called <strong>graph theory</strong>.</p>
+            </div>
+
+            <p>By abstracting away all the "stuff" (water, land, distances, directions) and keeping only the <em>relationships</em> (what connects to what), Euler proved mathematically that the walk was impossible. The proof had nothing to do with the physical bridges—it was about the <em>structure</em> of connections.</p>
+
+            <h2>The Philosophical Punch</h2>
+
+            <p>Think about what just happened:</p>
+
+            <div class="insight-box">
+                <p><strong>1. Simplification as Discovery:</strong> Euler didn't add complexity—he stripped it away. By ignoring what seemed important (the actual layout, distances, shapes), he revealed what was <em>truly</em> important (the pattern of connections).</p>
+            </div>
+
+            <div class="insight-box">
+                <p><strong>2. Representation Creates Reality:</strong> When Euler drew the problem differently, he didn't just find a new way to solve an old problem. He created a whole new mathematical reality—graph theory—that didn't exist before. Today, graph theory powers everything from GPS navigation to social network analysis to how your brain's neurons connect.</p>
+            </div>
+
+            <div class="insight-box">
+                <p><strong>3. The Map IS the Territory:</strong> This challenges the idea that math just "describes" reality. Euler's new way of drawing the problem didn't just describe the bridges—it <em>revealed a truth</em> that was always there but invisible until he showed us how to see it.</p>
+            </div>
+
+            <div class="quote">
+                "The important thing is not to stop questioning. Curiosity has its own reason for existing." — Albert Einstein
+            </div>
+
+            <h2>Your Exploration Challenge</h2>
+
+            <div class="activity-box">
+                <h3>Part 1: Experience the Original Problem (20 minutes)</h3>
+                
+                <div class="puzzle-box">
+                    <p><strong>Step 1:</strong> Draw your own Königsberg-style puzzle</p>
+                    <ul>
+                        <li>Draw 4 dots on your paper (these are land areas)</li>
+                        <li>Connect them with lines (bridges)</li>
+                        <li>Make it look complex—maybe 6-8 bridges</li>
+                        <li>Try to trace a path that crosses every bridge exactly once</li>
+                    </ul>
+                    
+                    <p style="margin-top: 1.5rem;"><strong>Step 2:</strong> Discover Euler's Rule</p>
+                    <p>Count how many bridges touch each dot. Euler discovered: A path that crosses all bridges once is only possible if you have zero or two dots with an odd number of bridges. (Try multiple drawings and test this!)</p>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Part 2: Apply Graph Theory to Your Life (30 minutes)</h3>
+                
+                <div class="puzzle-box">
+                    <p><strong>Choose ONE:</strong></p>
+                    
+                    <p><strong>Option A - Your Social Network:</strong> Draw a graph where each dot is a friend, and you draw a line between two dots if those friends know each other (independently of you). What patterns do you notice? Who's the most connected? Are there separate groups?</p>
+                    
+                    <p><strong>Option B - Your House Layout:</strong> Draw dots for rooms and lines for doorways. Can you walk through every doorway exactly once? Apply Euler's rule!</p>
+                    
+                    <p><strong>Option C - Your Daily Routine:</strong> Draw your activities as dots (school, home, practice, etc.) and your travel routes as lines. Is there a more efficient path?</p>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Part 3: Philosophical Writing (30 minutes)</h3>
+                
+                <p>Write 1-2 pages responding to these questions:</p>
+                
+                <ol>
+                    <li><strong>Perspective Power:</strong> Think of a problem you're facing right now (could be anything—a disagreement with a friend, a confusing homework assignment, a decision to make). How might you "redraw" this problem the way Euler redrew the bridges? What would you strip away? What would you keep?</li>
+                    
+                    <li><strong>Creation vs. Discovery:</strong> Did Euler <em>create</em> graph theory or <em>discover</em> it? Was it always true that the Königsberg walk was impossible, or did it only become impossible once Euler proved it? What's the difference?</li>
+                    
+                    <li><strong>Beauty in Simplification:</strong> Euler's solution is considered beautiful because it's so simple and general. Can you think of other times when removing complexity revealed truth? (Could be in science, art, writing, relationships, etc.)</li>
+                </ol>
+            </div>
+
+            <h2>The Big Picture</h2>
+
+            <div class="takeaway">
+                <h3>What This Means for Your Math Class</h3>
+                
+                <p>When you're solving word problems in math class and the teacher says "draw a diagram" or "make a table," this isn't just a technique for organizing information. <strong>You're being taught to think like Euler.</strong></p>
+
+                <p style="margin-top: 1rem;">The hard part of math isn't usually the calculation—calculators can do that. The hard part is <em>seeing the problem correctly</em>. Should this be a graph? An equation? A geometric drawing? A list? The representation you choose literally changes what you can discover.</p>
+
+                <p style="margin-top: 1rem;">This is true beyond math, too. How you frame a problem determines what solutions you can see. The question isn't just "How do I solve this?" but "How should I <em>look</em> at this?"</p>
+
+                <p style="margin-top: 1rem;"><strong>Mathematics teaches you that changing your viewpoint isn't giving up on the problem—sometimes it IS the solution.</strong> The bridges never moved. The walk was always impossible. But humanity couldn't know that until Euler showed us how to see it.</p>
+
+                <p style="margin-top: 1rem;">Next time you're stuck on a math problem, ask: "Am I looking at this the right way?" That question—the question Euler asked—is often more powerful than any formula.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
