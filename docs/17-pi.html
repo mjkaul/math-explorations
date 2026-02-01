@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>π: The Infinite Circle Number</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: #2d2d2d;
+            background: linear-gradient(135deg, #fef5f0 0%, #fee9e3 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #d9765f 0%, #c7654d 100%);
+            color: white;
+            padding: 3rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: 'π';
+            position: absolute;
+            font-size: 25rem;
+            opacity: 0.08;
+            right: -5rem;
+            top: -8rem;
+            font-family: 'Crimson Pro', serif;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            position: relative;
+        }
+
+        .content {
+            padding: 2.5rem;
+        }
+
+        h2 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2rem;
+            color: #c7654d;
+            margin: 2rem 0 1rem;
+            border-left: 4px solid #d9765f;
+            padding-left: 1rem;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .pi-box {
+            background: linear-gradient(135deg, #fef5f0 0%, #fff 100%);
+            border: 2px solid #d9765f;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .pi-digits {
+            font-family: 'Courier New', monospace;
+            font-size: 1.3rem;
+            color: #c7654d;
+            margin: 1rem 0;
+            line-height: 1.8;
+            word-break: break-all;
+        }
+
+        .history-timeline {
+            margin: 1.5rem 0;
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 1.25rem;
+            margin: 0.75rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #d9765f;
+        }
+
+        .timeline-year {
+            font-weight: 600;
+            color: #c7654d;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .discovery-box {
+            background: #f8f3f0;
+            border: 2px solid #d9765f;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .discovery-box h3 {
+            font-family: 'Crimson Pro', serif;
+            color: #c7654d;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .surprise-box {
+            background: white;
+            padding: 1.25rem;
+            margin: 0.75rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #d9765f;
+        }
+
+        .surprise-box h4 {
+            color: #c7654d;
+            margin-bottom: 0.5rem;
+        }
+
+        .formula-display {
+            background: #fff9f5;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            border: 2px dashed #d9765f;
+        }
+
+        .activity-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 5px solid #c7654d;
+        }
+
+        .activity-box h3 {
+            font-family: 'Crimson Pro', serif;
+            color: #c7654d;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .experiment-card {
+            background: white;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-radius: 8px;
+            border-left: 4px solid #d9765f;
+        }
+
+        .infinity-box {
+            background: linear-gradient(135deg, #f9f3fe 0%, #ede7fe 100%);
+            border: 2px solid #7a5bb8;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .infinity-box h3 {
+            font-family: 'Crimson Pro', serif;
+            color: #6849a5;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        .quote {
+            font-style: italic;
+            border-left: 3px solid #d9765f;
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .takeaway {
+            background: linear-gradient(135deg, #d9765f 0%, #c7654d 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+
+        .takeaway h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            margin: 1rem 0;
+        }
+
+        strong {
+            font-weight: 600;
+        }
+
+        ol, ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        .proof-box {
+            background: #fff9f5;
+            border: 2px dashed #d9765f;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .proof-box h4 {
+            font-family: 'Crimson Pro', serif;
+            color: #c7654d;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>π: The Infinite Circle Number</h1>
+            <p class="subtitle">The Most Famous Number in Mathematics</p>
+        </div>
+        
+        <div class="content">
+            <h2>What Is π, Really?</h2>
+            
+            <p>Take any circle. Measure around it (the circumference). Measure across it (the diameter). Divide circumference by diameter.</p>
+
+            <p>You'll always get the same number. Always. Whether you're measuring a coin, a wheel, or the orbit of a planet.</p>
+
+            <div class="pi-box">
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;">That number is π (pi):</p>
+                <div class="pi-digits">
+                    3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679...
+                </div>
+                <p style="margin-top: 1rem; font-style: italic;">And it goes on forever, never repeating.</p>
+            </div>
+
+            <p>But π is more than just the "circle number." It appears in places that have nothing to do with circles—in probability, physics, number theory, even in how rivers meander. It's one of the most important constants in mathematics, and <strong>we still don't fully understand it.</strong></p>
+
+            <h2>The Quest to Calculate π</h2>
+
+            <p>Humans have been trying to pin down π for over 4,000 years. The story of calculating π is the story of human ingenuity, obsession, and the relentless pursuit of precision.</p>
+
+            <div class="history-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">~1900 BCE - Ancient Babylonians</div>
+                    <p>Used 3.125 as their approximation. Close enough for building, but not exact.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">~1650 BCE - Rhind Papyrus (Egypt)</div>
+                    <p>Egyptian mathematicians used (16/9)² ≈ 3.1605. Remarkably accurate for the time!</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">~250 BCE - Archimedes</div>
+                    <p>Brilliant method: Draw polygons inside and outside a circle. More sides = closer to the circle. He used 96-sided polygons and proved: 3.1408 < π < 3.1429. This remained the best estimate for centuries!</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">~500 CE - Zu Chongzhi (China)</div>
+                    <p>Calculated π to 7 decimal places: 3.1415926. This record stood for 900 years! He used polygons with over 24,000 sides.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1706 - John Machin</div>
+                    <p>Used calculus and infinite series to calculate 100 digits. The age of infinite series had begun!</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1949 - ENIAC Computer</div>
+                    <p>First computer calculation: 2,037 digits in 70 hours. Computers were changing everything.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2024 - Modern Computers</div>
+                    <p>Over 100 TRILLION digits have been calculated. The current record is constantly being broken. Why? Because we can. Because it pushes computing limits. Because π fascinates us.</p>
+                </div>
+            </div>
+
+            <div class="quote">
+                "Probably no symbol in mathematics has evoked as much mystery, romanticism, misconception and human interest as the number π." — William L. Schaaf, mathematician
+            </div>
+
+            <h2>Why Can't We Write π Exactly?</h2>
+
+            <p>Here's the deep mathematical truth: <strong>π is irrational.</strong> This was proved in 1761 by Johann Lambert.</p>
+
+            <div class="discovery-box">
+                <h3>What "Irrational" Means</h3>
+                
+                <p><strong>Rational numbers</strong> can be written as fractions: 1/2, 3/4, 22/7, 355/113</p>
+                
+                <p style="margin-top: 1rem;"><strong>Irrational numbers</strong> cannot be written as fractions, no matter how hard you try. Their decimal expansions go on forever without repeating.</p>
+
+                <p style="margin-top: 1rem;">π ≈ 22/7 is a famous approximation (3.142857...), but it's not exactly π. No fraction equals π precisely.</p>
+
+                <p style="margin-top: 1rem;"><strong>But it gets weirder:</strong> π is also <em>transcendental</em> (proved by Ferdinand von Lindemann in 1882). This means π isn't the solution to any polynomial equation with rational coefficients. You can't get π by solving equations like x² - 2 = 0 (which gives √2, another irrational number).</p>
+
+                <p style="margin-top: 1rem;">π is, in a sense, more "irrational" than √2. It's transcendent—beyond algebra entirely.</p>
+            </div>
+
+            <div class="proof-box">
+                <h4>What Irrationality Means Philosophically</h4>
+                
+                <p>The ancient Pythagoreans believed all numbers could be expressed as ratios (hence "rational"). When they discovered irrational numbers (supposedly √2 first), it shattered their worldview. Legend says they tried to suppress this knowledge.</p>
+
+                <p style="margin-top: 1rem;">Irrational numbers mean the universe contains quantities that can never be expressed exactly with fractions. There's an inherent imprecision built into geometry itself. The ratio of a circle's circumference to its diameter cannot be written as a simple fraction.</p>
+
+                <p style="margin-top: 1rem;"><strong>This is profound:</strong> Mathematics contains necessary incompleteness. Some truths can only be approximated, never captured exactly.</p>
+            </div>
+
+            <h2>π Beyond Circles</h2>
+
+            <p>If π only appeared in circle calculations, it would be important but not magical. What makes π extraordinary is that it appears in contexts that seemingly have nothing to do with circles:</p>
+
+            <div class="discovery-box">
+                <h3>Surprising Appearances of π</h3>
+
+                <div class="surprise-box">
+                    <h4>🎯 Buffon's Needle (Probability)</h4>
+                    <p>Drop a needle randomly onto lined paper. The probability it crosses a line involves π! No circles in sight, yet π emerges from pure randomness. This led to "Monte Carlo methods"—using random sampling to calculate π.</p>
+                </div>
+
+                <div class="surprise-box">
+                    <h4>📊 The Normal Distribution (Statistics)</h4>
+                    <p>The famous "bell curve" equation contains π. Every time you see data naturally distributed (heights, test scores, measurement errors), π is hiding in the formula.</p>
+                </div>
+
+                <div class="surprise-box">
+                    <h4>🌊 Pendulums & Waves (Physics)</h4>
+                    <p>The period of a pendulum involves π. Wave equations involve π. Quantum mechanics is full of π. Einstein's field equations have π. It's everywhere in physics.</p>
+                </div>
+
+                <div class="surprise-box">
+                    <h4>🔢 Number Theory</h4>
+                    <p>The probability that two random integers are coprime (share no common factors) is 6/π². What do circles have to do with number relationships? Nobody really knows!</p>
+                </div>
+
+                <div class="surprise-box">
+                    <h4>🌀 Infinite Series</h4>
+                    <p>Beautiful formulas generate π from seemingly unrelated operations:</p>
+                    <div class="formula-display">
+                        π/4 = 1 - 1/3 + 1/5 - 1/7 + 1/9 - 1/11 + ...
+                    </div>
+                    <p style="margin-top: 0.5rem;">Add and subtract fractions forever, and you get π/4! Why?!</p>
+                </div>
+
+                <div class="surprise-box">
+                    <h4>🌍 Rivers!</h4>
+                    <p>The ratio of a river's actual length to the straight-line distance from source to mouth averages about π. Rivers meander in patterns that involve π. Nature keeps using this number!</p>
+                </div>
+            </div>
+
+            <h2>Beautiful π Formulas</h2>
+
+            <div class="discovery-box">
+                <h3>Mathematical Poetry</h3>
+
+                <p>Over centuries, mathematicians have discovered stunning formulas for π. Here are some favorites:</p>
+
+                <div class="formula-display" style="margin-top: 1rem;">
+                    <strong>Leibniz Formula (1673):</strong><br>
+                    π/4 = 1 - 1/3 + 1/5 - 1/7 + 1/9 - ...
+                </div>
+
+                <div class="formula-display">
+                    <strong>Wallis Product (1655):</strong><br>
+                    π/2 = (2/1)·(2/3)·(4/3)·(4/5)·(6/5)·(6/7)·...
+                </div>
+
+                <div class="formula-display">
+                    <strong>Ramanujan's Formula (1910s):</strong><br>
+                    1/π = (2√2/9801) Σ [(4k)!(1103+26390k)] / [(k!)⁴·396⁴ᵏ]
+                </div>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem; font-style: italic;">Ramanujan's formulas converge incredibly fast—each term adds 8 more correct digits!</p>
+
+                <div class="formula-display">
+                    <strong>Euler's Identity (involves π):</strong><br>
+                    e^(iπ) + 1 = 0
+                </div>
+                <p style="margin-top: 0.5rem; font-size: 0.9rem;">Called "the most beautiful equation in mathematics"—connects five fundamental constants!</p>
+            </div>
+
+            <h2>Your π Exploration</h2>
+
+            <div class="activity-box">
+                <h3>Part 1: Measure π Yourself (45 minutes)</h3>
+                
+                <div class="experiment-card">
+                    <p><strong>Discover π through measurement—just like ancient mathematicians!</strong></p>
+                    
+                    <p style="margin-top: 1rem;"><strong>Materials needed:</strong></p>
+                    <ul>
+                        <li>String or flexible measuring tape</li>
+                        <li>Ruler</li>
+                        <li>At least 5 circular objects (plates, cups, wheels, coins, etc.)</li>
+                        <li>Calculator</li>
+                        <li>Notebook</li>
+                    </ul>
+
+                    <p style="margin-top: 1rem;"><strong>The process:</strong></p>
+                    <ol>
+                        <li>For each circular object, measure the circumference (around) with string, then measure the string</li>
+                        <li>Measure the diameter (straight across through the center)</li>
+                        <li>Calculate: Circumference ÷ Diameter</li>
+                        <li>Record your result for each object</li>
+                        <li>Average all your measurements</li>
+                    </ol>
+
+                    <p style="margin-top: 1rem;"><strong>Questions:</strong></p>
+                    <ul>
+                        <li>How close did you get to 3.14159...?</li>
+                        <li>Why aren't all your measurements exactly the same?</li>
+                        <li>What sources of error exist in your measurements?</li>
+                        <li>If ancient mathematicians got within 0.01 of π using crude tools, how did they do it?</li>
+                    </ul>
+
+                    <p style="margin-top: 1rem;"><strong>Extension:</strong> Try to get more accurate by measuring larger circles or being more precise. Can you get to 3 decimal places?</p>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Part 2: Monte Carlo π (30 minutes)</h3>
+                
+                <div class="experiment-card">
+                    <p><strong>Calculate π using randomness!</strong></p>
+
+                    <p style="margin-top: 1rem;"><strong>The Method:</strong></p>
+                    <ol>
+                        <li>Draw a square (4×4 inches)</li>
+                        <li>Draw a quarter-circle inside it (radius = 4 inches, centered at one corner)</li>
+                        <li>Close your eyes and make random dots inside the square (try for 100+ dots)</li>
+                        <li>Count: How many dots fell inside the quarter-circle? How many total?</li>
+                        <li>Calculate: π ≈ 4 × (dots in quarter-circle / total dots)</li>
+                    </ol>
+
+                    <p style="margin-top: 1rem;"><strong>Why this works:</strong> The area of the quarter-circle is πr²/4. The area of the square is r². The ratio is π/4. So: (dots in circle)/(total dots) ≈ π/4!</p>
+
+                    <p style="margin-top: 1rem;"><strong>Try it multiple times:</strong> Does more dots = more accurate? This is how computers use randomness to solve problems!</p>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Part 3: Infinite Series (20 minutes)</h3>
+                
+                <div class="experiment-card">
+                    <p><strong>Use Leibniz's formula to approximate π</strong></p>
+
+                    <div class="formula-display">
+                        π/4 = 1 - 1/3 + 1/5 - 1/7 + 1/9 - 1/11 + ...
+                    </div>
+
+                    <p style="margin-top: 1rem;"><strong>Calculate:</strong></p>
+                    <ol>
+                        <li>After 1 term: 1 × 4 = 4 (not very close to π!)</li>
+                        <li>After 2 terms: (1 - 1/3) × 4 = 2.666...</li>
+                        <li>After 3 terms: (1 - 1/3 + 1/5) × 4 = ?</li>
+                        <li>Continue for 10 terms, 20 terms, 50 terms...</li>
+                    </ol>
+
+                    <p style="margin-top: 1rem;"><strong>Observe:</strong> How quickly does it converge? How many terms to get 3.14? This is why computers use faster formulas (like Ramanujan's)!</p>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Part 4: π Memorization Challenge (Optional, fun!)</h3>
+                
+                <div class="experiment-card">
+                    <p><strong>How many digits can you memorize?</strong></p>
+                    
+                    <p>3.1415926535897932384626433832795028841971...</p>
+
+                    <p style="margin-top: 1rem;"><strong>Memory techniques:</strong></p>
+                    <ul>
+                        <li>Chunking: Break into groups (3.14 / 159 / 265 / 358...)</li>
+                        <li>Story method: Create a story where word lengths = digits</li>
+                        <li>Pattern recognition: Look for patterns in the digits</li>
+                        <li>Music: Set digits to a melody</li>
+                    </ul>
+
+                    <p style="margin-top: 1rem;">The world record is over 70,000 digits. Don't try that! But can you get to 20 digits? 50?</p>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Part 5: Philosophical Essay (60 minutes)</h3>
+                
+                <p><strong>Write 2-3 pages addressing these questions:</strong></p>
+                
+                <ol>
+                    <li><strong>The Infinity Problem:</strong> π has infinite decimal places that never repeat. You can calculate it forever and never finish. What does it mean for a number to be infinite but definite? How can something be completely determined yet never completely knowable?</li>
+                    
+                    <li><strong>Discovered or Invented?</strong> π exists in every circle in the universe—it existed before humans. But we invented ways to calculate it, represent it, understand it. Is π itself discovered or invented? What's the difference?</li>
+                    
+                    <li><strong>The Appearance Mystery:</strong> Why does π show up in probability, physics, number theory, rivers—places with no obvious connection to circles? What does this tell us about the structure of mathematics and reality?</li>
+                    
+                    <li><strong>Perfect Imperfection:</strong> We can never write π exactly (except as "π"). Every practical use requires approximation. Yet this "imperfect" number is fundamental to the universe. What does this say about the relationship between mathematical ideals and physical reality?</li>
+                    
+                    <li><strong>The Transcendental Question:</strong> π is transcendental—it transcends algebra. It can't be the solution to polynomial equations. There's something "extra" about it. Does this make π more real or less real than algebraic numbers like √2?</li>
+                    
+                    <li><strong>Personal Reflection:</strong> After measuring circles yourself and seeing π emerge from randomness (Monte Carlo) and from infinite series, how do you think about this number differently? Is it more mysterious or less mysterious than before?</li>
+                </ol>
+            </div>
+
+            <div class="infinity-box">
+                <h3>The Digits Go On Forever...</h3>
+                
+                <p>Here are the first 1,000 digits of π, for the curious:</p>
+                
+                <div class="pi-digits" style="font-size: 0.75rem; text-align: left; line-height: 1.6;">
+3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679
+8214808651328230664709384460955058223172535940812848111745028410270193852110555964462294895493038196
+4428810975665933446128475648233786783165271201909145648566923460348610454326648213393607260249141273
+7245870066063155881748815209209628292540917153643678925903600113305305488204665213841469519415116094
+3305727036575959195309218611738193261179310511854807446237996274956735188575272489122793818301194912
+9833673362440656643086021394946395224737190702179860943702770539217176293176752384674818467669405132
+0005681271452635608277857713427577896091736371787214684409012249534301465495853710507922796892589235
+4201995611212902196086403441815981362977477130996051870721134999999837297804995105973173281609631859
+5024459455346908302642522308253344685035261931188171010003137838752886587533208381420617177669147303
+5982534904287554687311595628638823537875937519577818577805321712268066130019278766111959092164201989
+                </div>
+
+                <p style="margin-top: 1rem;">...and it continues forever, without pattern or end. Somewhere in these infinite digits is your birthday, your phone number, any sequence of numbers you can imagine. Yet we'll never find them all, because infinity has no end.</p>
+            </div>
+
+            <h2>The Big Picture</h2>
+
+            <div class="takeaway">
+                <h3>What This Means for Your Math Class</h3>
+                
+                <p>When you're learning about circles in geometry class—circumference formulas, area formulas, all involving π—you're working with one of the deepest mysteries in mathematics.</p>
+
+                <p style="margin-top: 1rem;">π isn't just a number to memorize (3.14 or 22/7). It's a window into infinity. It's proof that the universe contains quantities that can never be written exactly, only approximated. It's evidence that mathematics is discovered, not invented—because π was in circles long before humans existed to calculate it.</p>
+
+                <p style="margin-top: 1rem;"><strong>Every time you use π, you're using infinity.</strong> You're rounding off an infinite decimal. You're approximating something perfect with something practical. This isn't a limitation—it's beautiful. It means mathematics contains depths we'll never fully plumb.</p>
+
+                <p style="margin-top: 1rem;">The formula C = πd looks simple. But packed into that π is:
+                <ul style="margin-top: 0.5rem;">
+                    <li>Infinite complexity (endless non-repeating digits)</li>
+                    <li>Perfect precision (the ratio is exactly π, always)</li>
+                    <li>Universal presence (appears in circles across the cosmos)</li>
+                    <li>Mysterious emergence (shows up where circles don't even exist)</li>
+                    <li>Practical utility (essential for engineering and physics)</li>
+                    <li>Eternal mystery (we still discover new things about π)</li>
+                </ul>
+                </p>
+
+                <p style="margin-top: 1rem;"><strong>This is what makes mathematics profound.</strong> A simple ratio—circumference to diameter—contains infinity. A number you can calculate but never finish. A constant that appears in probability, physics, rivers, bells curves, and pendulums. A transcendental truth that exists beyond algebra.</p>
+
+                <p style="margin-top: 1rem;">When you see "π" in an equation, don't just think "about 3.14." Think: Here is infinity. Here is mystery. Here is a number that humans have pursued for 4,000 years and still haven't fully captured. Here is evidence that mathematics touches something eternal.</p>
+
+                <p style="margin-top: 1rem;"><strong>You're not just learning geometry. You're encountering the infinite.</strong> And that circle on your homework page? It contains endless decimals, thousands of years of human effort, and a ratio that will outlast civilizations. That's the power of π.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
